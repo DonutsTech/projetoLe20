@@ -1,0 +1,17 @@
+@import 'variaveis';
+
+.mapa {
+	width: 100%;
+	min-height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: transparent;
+	z-index: 0;
+
+  .mapaImg {
+    width: 40%;
+    height: auto;
+    min-width: 240px;
+  }
+}
