@@ -1,0 +1,73 @@
+@import 'variaveis';
+
+.chamada {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 56px 0;
+
+  @media (max-width: $mobile) {
+    padding: 32px 0;
+  }
+
+  .logo {
+    width: 30%;
+    height: auto;
+    min-width: 240px;
+    margin-bottom: 32px;
+  }
+
+  .textos {
+    width: 80%;
+    min-width: 280px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $cor-1;
+
+    .titulo {
+      font-size: $titulo-2;
+      margin-bottom: 16px;
+      font-weight: 900;
+    }
+
+    .texto {
+      font-size: $texto-3;
+      margin-bottom: 8px;
+      text-align: center;
+      width: 80%;
+      min-width: 300px;
+      line-height: 1.3;
+    }
+
+    .lista {
+      width: 80%;
+      min-width: 280px;
+      margin: 16px 0;
+
+      .listaTitulo {
+        font-size: $titulo-3;
+        font-weight: bold;
+        margin: 16px 0;
+      }
+
+      .item {
+        margin-bottom: 16px;
+
+        .itemTexto {
+          font-size: $texto-3;
+
+          .destaque {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
