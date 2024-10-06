@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+$cor-0: #FCFCF7;
+$cor-1: #081E33;
+$cor-1-overlay: #081e338e;
+$cor-1-1: #0D354F;
+$cor-1-2: #13496D;
+$cor-1-3: #1A5D87;
+$cor-1-4: #2073A5;
+$cor-2: #006D7E;
+$cor-2-1: #1C8291;
+$cor-2-2: #3995A4;
+$cor-2-3: #53AAB4;
+$cor-2-4: #70BDC5;
+$cor-3: #F9C930;
+$cor-3-1: #F9CE49;
+$cor-3-2: #F7D468;
+$cor-3-3: #F5DB84;
+$cor-3-4: #F4DFA0;
+$cor-4: #F04F08;
+$cor-4-1: #EE6224;
+$cor-4-2: #EF7744;
+$cor-4-3: #F18A5F;
+$cor-4-4: #F19E7E;
+$cor-5: #B12629;
+$cor-5-1: #C0403F;
+$cor-5-2: #D0595A;
+$cor-5-3: #DD7272;
+$cor-5-4: #EA8A8B;
+$cor-6: #DDDDDD;
+$cor-6-1: #CCCCCC;
+$cor-6-2: #BBBBBB;
+$cor-6-3: #ADADAD;
+$cor-6-4: #999999;
+
+$mobile: 780px;
+
+$titulo-1: clamp(1.5rem, 1.3rem + 1vw, 2.5rem);
+$titulo-2: clamp(1.25rem, 1.05rem + 1vw, 2.25rem);
+$titulo-3: clamp(1rem, 0.8rem + 1vw, 2rem);
+
+$texto-1: clamp(1.25rem, 1.05rem + 1vw, 2.25rem);
+$texto-2: clamp(1rem, 0.8rem + 1vw, 2rem);
+$texto-3: clamp(0.875rem, 0.7rem + 0.875vw, 1.75rem);
+$texto-4: clamp(0.5rem, 0.3rem + 1vw, 1.5rem);
