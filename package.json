@@ -25,6 +25,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
     "next-video": "^1.2.0",
+    "react-svg-blob": "^0.3.1",
     "typescript": "^5"
   }
 }
