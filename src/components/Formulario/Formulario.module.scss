@@ -1,14 +1,16 @@
 @import 'variaveis';
 
 .formulario { 
-  width: 280px;
+  width: clamp(17.5rem, 15rem + 12.5vw, 30rem);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 16px;
 
   .item { 
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 8px;
 
     label {
@@ -18,7 +20,7 @@
     }
 
     input, textarea {
-      width: 100%;
+      width: clamp(16.5rem, 14.175rem + 11.625vw, 28.125rem);
       padding: 8px 16px;
       border-radius: 8px;
       font-size: 18px;
@@ -39,6 +41,10 @@
     textarea {
       height: 128px;
     }
+
+    .error {
+      color: $cor-5-1
+    }
   }
   button {
     width: 156px;
@@ -51,6 +57,7 @@
     border: none;
     cursor: pointer;
     box-shadow: -5px 5px 10px 0 $cor-1-overlay;
+    align-self: flex-start;
     
     &:hover { 
       background-color: $cor-1-1;
