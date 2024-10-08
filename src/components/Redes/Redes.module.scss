@@ -1,0 +1,102 @@
+@import 'variaveis';
+
+.redes { 
+  width: 50%;
+  min-width: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .redesContainer {
+    width: 80%;
+    min-width: 264px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    .tituloChamada {
+      font-size: $titulo-3;
+      font-weight: bold;
+      color: $cor-2-1;
+      line-height: 1.5;
+      align-self: start;
+    }
+
+    .textChamada {
+      width: 100%;
+      min-width: 280px;
+      font-size: $texto-3;
+      color: $cor-1-1;
+      text-align: left;
+      line-height: 1.3;
+    }
+
+    .redesLinks { 
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+
+      .redeBox { 
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        a { 
+          width: 48px;
+          height: 48px;
+
+          .icon {
+            width: 48px;
+            height: 48px;
+
+            &:hover {
+              scale: 0.9;
+              cursor: pointer;
+              transition: all 200ms ease-in-out;
+            }
+          }
+          .text {
+            width: 100%;
+            min-width: 280px;
+            font-size: $texto-3;
+            color: $cor-1-1;
+            text-align: left;
+            line-height: 1.3;
+          }
+        }
+      }
+
+    }
+
+
+
+    @media (max-width: $mobile) {
+      
+      margin-top: 16px;
+
+      .tituloChamada {
+        // width: 80%;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .textChamada {
+        text-align: center;
+        margin: auto;
+      }
+
+    }
+  }
+
+}
