@@ -2,7 +2,6 @@
 
 .mapa {
 	width: 100%;
-	min-height: 400px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -11,7 +10,7 @@
 
   .mapaImg {
     width: 40%;
+		min-width: 300px;
     height: auto;
-    min-width: 240px;
   }
 }
