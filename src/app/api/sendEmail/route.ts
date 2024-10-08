@@ -11,6 +11,14 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+transporter.verify((error, success) => {
+  if (error) {
+    console.error('Erro na verificação do transportador:', error);
+  } else {
+    console.log('Transportador pronto para enviar e-mails:', success);
+  }
+});
+
 export async function POST(request: Request) {
   const data = await request.json();
   const { nome, email, telefone, CEP, mensagem, enderecoCompleto } = data;
