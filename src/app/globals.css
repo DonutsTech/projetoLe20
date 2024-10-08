@@ -136,6 +136,36 @@ table {
   border-spacing: 0;
 }
 
+*::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #BBBBBB;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #DDDDDD;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #ADADAD;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #0D354F;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #1C8291;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #1A5D87;
+}
+
 
 /* Especifico */
 
