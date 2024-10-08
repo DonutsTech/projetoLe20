@@ -46,6 +46,12 @@
       color: $cor-5-1
     }
   }
+  .message {
+    font-size: 14px;
+    align-self: flex-start;
+    color: $cor-1-1;
+    font-weight: 600;
+  }
   button {
     width: 156px;
     height: 48px;
