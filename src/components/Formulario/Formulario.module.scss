@@ -1,0 +1,63 @@
+@import 'variaveis';
+
+.formulario { 
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .item { 
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+      font-size: 24px;
+      font-weight: bold;
+      color: $cor-1-1;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 18px;
+      color: $cor-1-1;
+      border: 5px solid $cor-2-1;
+      box-shadow: -5px 5px 0 0 $cor-2-1;
+      transition: all 100ms ease-in-out;
+
+      &:focus { 
+        outline: none;
+        box-shadow: -3px 3px 0 0 $cor-1-1;
+        border: 3px solid $cor-1-1;
+      }
+    }
+
+    
+
+    textarea {
+      height: 128px;
+    }
+  }
+  button {
+    width: 156px;
+    height: 48px;
+    outline: none;
+    background-color: $cor-2-1;
+    color: $cor-6;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    box-shadow: -5px 5px 10px 0 $cor-1-overlay;
+    
+    &:hover { 
+      background-color: $cor-1-1;
+      // color: $cor-2-1;
+      box-shadow: none;
+      scale: 0.9;
+      transition: all 200ms ease-in-out;
+    }
+  }
+}
