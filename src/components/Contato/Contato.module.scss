@@ -1,0 +1,12 @@
+@import 'variaveis';
+
+.contato { 
+  width: 100%;
+  height: auto;
+  min-height: 50vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
