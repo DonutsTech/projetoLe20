@@ -21,26 +21,48 @@ transporter.verify((error, success) => {
 
 export async function POST(request: Request) {
   const data = await request.json();
-  const { nome, email, telefone, CEP, mensagem, enderecoCompleto, cnpj } = data;
+  const { nome, email, telefone, CEP, mensagem, enderecoCompleto, cnpj, cnpjData } = data;
+
+
+  const razaoSocial = cnpjData.razao_social;
+  const nomeFantasia = cnpjData.nome_fantasia;
+  const dataFundacao = formatDate(cnpjData.data_fundacao);
+  const status = cnpjData.status;
+  const dataStatus = formatDate(cnpjData.statusDate);
+  const atividadePrincipal = cnpjData.atividade_principal;
+  const socios = cnpjData.socios;
+
+  const rua = enderecoCompleto.rua || 'Não disponível';
+  const bairro = enderecoCompleto.bairro || 'Não disponível';
+  const cidade = enderecoCompleto.localidade || 'Não disponível';
+  const estado = enderecoCompleto.estado || 'Não disponível';
 
   const mailOptions = {
-    from: 'lucia@le20rep.com',
-    to: 'lucia@le20rep.com',
+    from: process.env.EMAIL_USER,
+    to: process.env.EMAIL_USER,
     subject: `Novo Formulário do Site: de ${nome}`,
-    text:`
+    text: `
       Nome: ${nome}
       Email: ${email}
       Telefone: ${telefone}
-      CNPJ: ${cnpj}
+      CNPJ: ${cnpj || 'Não fornecido'}
       Endereço Completo:
-      - Logradouro: ${enderecoCompleto.logradouro}
-      - Bairro: ${enderecoCompleto.bairro}
-      - Cidade: ${enderecoCompleto.localidade}
-      - Estado: ${enderecoCompleto.estado}
+      - Rua: ${rua}
+      - Bairro: ${bairro}
+      - Cidade: ${cidade}
+      - Estado: ${estado}
       - CEP: ${CEP}
 
-      
-      Mensagem: ${mensagem}
+      Dados do CNPJ:
+      - Razão Social: ${razaoSocial}
+      - Nome Fantasia: ${nomeFantasia}
+      - Data de Fundação: ${dataFundacao}
+      - Status: ${status}
+      - Data do Status: ${dataStatus}
+      - Atividade Principal: ${atividadePrincipal}
+      - Sócios: ${socios}
+
+      Mensagem: ${mensagem || 'Sem mensagem'}
     `,
   };
 
@@ -51,4 +73,22 @@ export async function POST(request: Request) {
     console.error('Erro ao enviar o email:', error);
     return NextResponse.json({ message: 'Erro ao enviar o email.' }, { status: 500 });
   }
+}
+
+function formatDate(dateString: string): string {
+  if (!dateString) {
+    return 'Data não disponível';
+  }
+  
+  const date = new Date(dateString);
+  
+  if (isNaN(date.getTime())) {
+    return 'Data inválida';
+  }
+  
+  const dia = String(date.getDate()).padStart(2, '0');
+  const mes = String(date.getMonth() + 1).padStart(2, '0');
+  const ano = date.getFullYear();
+  
+  return `${dia}/${mes}/${ano}`;
 }
