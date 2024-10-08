@@ -11,6 +11,7 @@ const schema = z.object({
   email: z.string().email('Email inválido'),
   telefone: z.string().regex(/^\(\d{2}\)\s\d{5}-\d{4}$/, 'Telefone inválido'),
   CEP: z.string().regex(/^\d{5}-\d{3}$/, 'CEP inválido'),
+  cnpj: z.string().regex(/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/, 'CNPJ inválido'),
   mensagem: z.string().optional(),
 });
 
@@ -49,7 +50,6 @@ const Formulario = () => {
       return data as Endereco;
     } catch (error) {
       console.error('Erro ao buscar endereço:', error);
-      console.log('Erro ao buscar o endereço, tente novamente.');
       return null;
     }
   };
@@ -61,12 +61,22 @@ const Formulario = () => {
       .replace(/(\d{5})(\d)/, '$1-$2') 
       .slice(0, 15);
   };
-  
+
   const formatCEP = (value: string) => {
     return value
       .replace(/\D/g, '') 
       .replace(/(\d{5})(\d)/, '$1-$2') 
-      .slice(0, 9); 
+      .slice(0, 9);
+  };
+
+  const formatCNPJ = (value: string) => {
+    return value
+      .replace(/\D/g, '') 
+      .replace(/^(\d{2})(\d)/, '$1.$2')
+      .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
+      .replace(/\.(\d{3})(\d)/, '.$1/$2')
+      .replace(/(\d{4})(\d)/, '$1-$2')
+      .slice(0, 18);
   };
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({
@@ -77,8 +87,10 @@ const Formulario = () => {
   const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
   const [CEP, setCEP] = useState('');
+  const [cnpj, setCNPJ] = useState('');
   const [mensagem, setMensagem] = useState('');
   const [enderecoCompleto, setEnderecoCompleto] = useState<Endereco | null>(null); 
+  const [isSubmitting, setIsSubmitting] = useState(false); // Estado para bloquear o botão durante o envio
 
   const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
@@ -105,6 +117,9 @@ const Formulario = () => {
           }
         }
         break;
+      case 'cnpj':
+        setCNPJ(formatCNPJ(value)); 
+        break;
       case 'mensagem':
         setMensagem(value.replace(/\n/g, ' '));
         break;
@@ -114,6 +129,7 @@ const Formulario = () => {
   };
 
   const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true); // Bloqueia o botão de envio
     try {
       const response = await fetch('/api/sendEmail', {
         method: 'POST',
@@ -139,10 +155,13 @@ const Formulario = () => {
       setEmail('');
       setTelefone('');
       setCEP('');
+      setCNPJ('');
       setMensagem('');
       setEnderecoCompleto(null);
     } catch (error) {
       console.error('Erro ao enviar o formulário:', error);
+    } finally {
+      setIsSubmitting(false); // Libera o botão de envio após a conclusão
     }
   };
 
@@ -197,6 +216,18 @@ const Formulario = () => {
         {errors.CEP?.message && <span className={Style.error}>{String(errors.CEP.message)}</span>}
       </div>
       <div className={Style.item}>
+        <label htmlFor="cnpj">CNPJ</label>
+        <input
+          type="text"
+          id="cnpj"
+          placeholder="CNPJ"
+          {...register('cnpj')}
+          value={cnpj}
+          onChange={handleInputChange}
+        />
+        {errors.cnpj?.message && <span className={Style.error}>{String(errors.cnpj.message)}</span>}
+      </div>
+      <div className={Style.item}>
         <label htmlFor="mensagem">Mensagem</label>
         <textarea
           id="mensagem"
@@ -207,7 +238,9 @@ const Formulario = () => {
         />
         {errors.mensagem?.message && <span className={Style.error}>{String(errors.mensagem.message)}</span>}
       </div>
-      <button type="submit">Enviar</button>
+      <button type="submit" disabled={isSubmitting}> 
+        {isSubmitting ? 'Enviando...' : 'Enviar'}
+      </button> 
     </form>
   );
 };

@@ -21,7 +21,7 @@ transporter.verify((error, success) => {
 
 export async function POST(request: Request) {
   const data = await request.json();
-  const { nome, email, telefone, CEP, mensagem, enderecoCompleto } = data;
+  const { nome, email, telefone, CEP, mensagem, enderecoCompleto, cnpj } = data;
 
   const mailOptions = {
     from: 'lucia@le20rep.com',
@@ -31,6 +31,7 @@ export async function POST(request: Request) {
       Nome: ${nome}
       Email: ${email}
       Telefone: ${telefone}
+      CNPJ: ${cnpj}
       Endereço Completo:
       - Logradouro: ${enderecoCompleto.logradouro}
       - Bairro: ${enderecoCompleto.bairro}
