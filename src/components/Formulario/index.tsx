@@ -11,7 +11,9 @@ const schema = z.object({
   email: z.string().email('Email inválido'),
   telefone: z.string().regex(/^\(\d{2}\)\s\d{5}-\d{4}$/, 'Telefone inválido'),
   CEP: z.string().regex(/^\d{5}-\d{3}$/, 'CEP inválido'),
-  cnpj: z.string().regex(/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/, 'CNPJ inválido'),
+  cnpj: z.string()
+    .optional()
+    .refine((val) => val === undefined || /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/.test(val), 'CNPJ inválido'),
   mensagem: z.string().optional(),
 });
 
@@ -31,12 +33,31 @@ interface ViaCEPErro {
 
 type ViaCEPResponse = Endereco | ViaCEPErro;
 
+interface CNPJData {
+  company: {
+    name: string;
+    members: {
+      person: {
+        name: string;
+      };
+    }[];
+  };
+  alias: string;
+  founded: string;
+  status: {
+    text: string;
+  };
+  statusDate: string;
+  mainActivity: {
+    text: string;
+  };
+}
+
 const isViaCEPErro = (data: ViaCEPResponse): data is ViaCEPErro => {
   return (data as ViaCEPErro).erro !== undefined;
 };
 
 const Formulario = () => {
-
   const fetchEndereco = async (cep: string): Promise<Endereco | null> => {
     try {
       const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
@@ -54,24 +75,37 @@ const Formulario = () => {
     }
   };
 
+  const fetchCNPJData = async (cnpj: string | undefined) => {
+    if (!cnpj) return null; 
+
+    try {
+      const response = await fetch(`https://open.cnpja.com/office/${cnpj}`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Erro ao buscar informações do CNPJ:', error);
+      return null;
+    }
+  };
+
   const formatTelefone = (value: string) => {
     return value
-      .replace(/\D/g, '') 
-      .replace(/^(\d{2})(\d)/, '($1) $2') 
-      .replace(/(\d{5})(\d)/, '$1-$2') 
+      .replace(/\D/g, '')
+      .replace(/^(\d{2})(\d)/, '($1) $2')
+      .replace(/(\d{5})(\d)/, '$1-$2')
       .slice(0, 15);
   };
 
   const formatCEP = (value: string) => {
     return value
-      .replace(/\D/g, '') 
-      .replace(/(\d{5})(\d)/, '$1-$2') 
+      .replace(/\D/g, '')
+      .replace(/(\d{5})(\d)/, '$1-$2')
       .slice(0, 9);
   };
 
   const formatCNPJ = (value: string) => {
     return value
-      .replace(/\D/g, '') 
+      .replace(/\D/g, '')
       .replace(/^(\d{2})(\d)/, '$1.$2')
       .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
       .replace(/\.(\d{3})(\d)/, '.$1/$2')
@@ -89,8 +123,9 @@ const Formulario = () => {
   const [CEP, setCEP] = useState('');
   const [cnpj, setCNPJ] = useState('');
   const [mensagem, setMensagem] = useState('');
-  const [enderecoCompleto, setEnderecoCompleto] = useState<Endereco | null>(null); 
-  const [isSubmitting, setIsSubmitting] = useState(false); // Estado para bloquear o botão durante o envio
+  const [enderecoCompleto, setEnderecoCompleto] = useState<Endereco | null>(null);
+  const [cnpjData, setCNPJData] = useState<CNPJData | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
@@ -112,13 +147,22 @@ const Formulario = () => {
         if (formattedCEP.length === 9) {
           const endereco = await fetchEndereco(formattedCEP.replace('-', ''));
           if (endereco) {
-            setEnderecoCompleto(endereco); 
-            console.log('Endereço completo: ', endereco);
+            setEnderecoCompleto(endereco);
           }
         }
         break;
       case 'cnpj':
-        setCNPJ(formatCNPJ(value)); 
+        const formattedCNPJ = formatCNPJ(value);
+        setCNPJ(formattedCNPJ);
+
+        if (formattedCNPJ.replace(/\D/g, '').length === 14) { 
+          const cnpjInfo = await fetchCNPJData(formattedCNPJ.replace(/\D/g, ''));
+          if (cnpjInfo) {
+            setCNPJData(cnpjInfo);
+          }
+        } else if (formattedCNPJ === '') {
+          setCNPJData(null);
+        }
         break;
       case 'mensagem':
         setMensagem(value.replace(/\n/g, ' '));
@@ -128,8 +172,14 @@ const Formulario = () => {
     }
   };
 
+  const calculateFoundationYears = (foundedDate: string) => {
+    const founded = new Date(foundedDate);
+    const currentYear = new Date().getFullYear();
+    return currentYear - founded.getFullYear();
+  };
+
   const onSubmit = async (data: FormData) => {
-    setIsSubmitting(true); // Bloqueia o botão de envio
+    setIsSubmitting(true);
     try {
       const response = await fetch('/api/sendEmail', {
         method: 'POST',
@@ -139,17 +189,25 @@ const Formulario = () => {
         body: JSON.stringify({
           ...data,
           enderecoCompleto: {
-            logradouro: enderecoCompleto?.logradouro || '',
             localidade: enderecoCompleto?.localidade || '',
             estado: enderecoCompleto?.uf || '',
             bairro: enderecoCompleto?.bairro || '',
             rua: enderecoCompleto?.logradouro || '',
           },
+          cnpjData: cnpjData ? {
+            razao_social: cnpjData.company.name,
+            nome_fantasia: cnpjData.alias,
+            data_fundacao: cnpjData.founded,
+            anos_fundacao: calculateFoundationYears(cnpjData.founded),
+            status: cnpjData.status.text,
+            statusDate: cnpjData.statusDate,
+            atividade_principal: cnpjData.mainActivity.text,
+            socios: cnpjData.company.members.map((socio) => socio.person.name).join(',\n')
+          } : null
         }),
       });
 
-      const result = await response.json();
-      console.log(result.message);
+      await response.json();
       reset();
       setNome('');
       setEmail('');
@@ -158,20 +216,21 @@ const Formulario = () => {
       setCNPJ('');
       setMensagem('');
       setEnderecoCompleto(null);
+      setCNPJData(null);
     } catch (error) {
       console.error('Erro ao enviar o formulário:', error);
     } finally {
-      setIsSubmitting(false); // Libera o botão de envio após a conclusão
+      setIsSubmitting(false);
     }
   };
 
   return (
     <form className={Style.formulario} onSubmit={handleSubmit(onSubmit)}>
       <div className={Style.item}>
-        <label htmlFor="nome">Nome</label>
+        <label htmlFor="nome">Nome*</label>
         <input
-          type="text"
           id="nome"
+          type="text"
           placeholder="Nome"
           {...register('nome')}
           value={nome}
@@ -180,10 +239,10 @@ const Formulario = () => {
         {errors.nome?.message && <span className={Style.error}>{String(errors.nome.message)}</span>}
       </div>
       <div className={Style.item}>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email*</label>
         <input
-          type="email"
           id="email"
+          type="email"
           placeholder="Email"
           {...register('email')}
           value={email}
@@ -192,11 +251,11 @@ const Formulario = () => {
         {errors.email?.message && <span className={Style.error}>{String(errors.email.message)}</span>}
       </div>
       <div className={Style.item}>
-        <label htmlFor="telefone">Telefone</label>
+        <label htmlFor="telefone">Celular*</label>
         <input
-          type="tel"
           id="telefone"
-          placeholder="Telefone"
+          type="text"
+          placeholder="Somente os números com o ddd"
           {...register('telefone')}
           value={telefone}
           onChange={handleInputChange}
@@ -204,11 +263,11 @@ const Formulario = () => {
         {errors.telefone?.message && <span className={Style.error}>{String(errors.telefone.message)}</span>}
       </div>
       <div className={Style.item}>
-        <label htmlFor="CEP">CEP</label>
+        <label htmlFor="CEP">CEP*</label>
         <input
-          type="text"
           id="CEP"
-          placeholder="CEP"
+          type="text"
+          placeholder="CEP- Somente os números"
           {...register('CEP')}
           value={CEP}
           onChange={handleInputChange}
@@ -218,9 +277,9 @@ const Formulario = () => {
       <div className={Style.item}>
         <label htmlFor="cnpj">CNPJ</label>
         <input
-          type="text"
           id="cnpj"
-          placeholder="CNPJ"
+          type="text"
+          placeholder="CNPJ- Somente os números"
           {...register('cnpj')}
           value={cnpj}
           onChange={handleInputChange}
@@ -236,11 +295,11 @@ const Formulario = () => {
           value={mensagem}
           onChange={handleInputChange}
         />
-        {errors.mensagem?.message && <span className={Style.error}>{String(errors.mensagem.message)}</span>}
       </div>
-      <button type="submit" disabled={isSubmitting}> 
+      <span className={Style.message}>* campos obrigatórios</span>
+      <button type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Enviando...' : 'Enviar'}
-      </button> 
+      </button>
     </form>
   );
 };
