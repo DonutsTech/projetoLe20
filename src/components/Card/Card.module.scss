@@ -1,0 +1,334 @@
+@import 'variaveis';
+
+.container {
+  .card {
+    width: 280px;
+    height: 280px;
+    background-color: $cor-2-1;
+    border-top-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    position: relative;
+    background-color: $cor-1;
+    box-shadow: 0 0 15px 5px $cor-1-overlay;
+
+
+    .overlay {
+      width: 100%;
+      height: 100%;
+      background-color: $cor-1-overlay;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      border-top-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+      display: none;
+    }
+
+    .slide {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      .boxSlide {
+        width: 280px;
+        height: 280px;
+
+        .imageSlide {
+          width: 280px;
+          height: 280px;
+          object-fit: cover;
+          border-top-left-radius: 32px;
+          border-bottom-right-radius: 32px;
+        }
+      }
+    }
+
+    .titulo {
+      font-size: 24px;
+      font-weight: bold;
+      color: $cor-6;
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      display: none;
+    }
+
+    .botoes {
+      display: none;
+      width: 100%;
+      height: 64px;
+      align-items: center;
+      justify-content: space-around;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+
+      a {
+        width: 56px;
+        height: 56px;
+
+        .btn {
+          width: 48px;
+          height: auto;
+
+          &:hover {
+            scale: 0.9;
+            transition: all 200ms ease-in-out;
+          }
+        }
+      }
+    }
+
+
+
+    &:hover {
+      cursor: pointer;
+
+
+      .overlay {
+        display: block;
+      }
+
+      .titulo {
+        display: block;
+      }
+
+      .botoes {
+        display: flex;
+      }
+
+      .slide {
+        opacity: 0.8;
+        filter: blur(2px);
+      }
+
+    }
+
+    @media (max-width: $mobile) {
+
+      .titulo {
+        display: block;
+      }
+
+      .overlay {
+        display: block;
+      }
+    }
+  }
+
+  .contentBox {
+    width: 95vw;
+    height: 95vh;
+    min-width: 300px;
+    background-color: $cor-1;
+    z-index: 16;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-top-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+
+    .content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 180px;
+      border-top-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+      position: relative;
+
+      .btnClose {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background-color: $cor-5-1;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        outline: none;
+
+        &:hover {
+          scale: 0.9;
+          transition: all 200ms ease-in-out;
+        }
+
+        img {
+          width: 80%;
+          height: auto;
+        }
+      }
+    
+      .cabeca {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px 16px;
+        padding: 16px;
+
+        .titulo {
+          font-size: $titulo-2;
+          font-weight: bold;
+          color: $cor-6;
+          text-align: center;
+        }
+
+        .tips {
+          width: 100%;
+          height: auto;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          align-items: center;
+          justify-content: center;
+
+          .tip {
+            font-size: $texto-3;
+            font-weight: 600;
+            color: $cor-6;
+            padding: 5px 10px;
+            background-color: $cor-4-1;
+            border-radius: 16px;
+
+          }
+        }
+      }
+
+      .body {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+
+        .slide {
+          width: 280px;
+          height: 280px;
+
+          .boxSlide {
+            width: 280px;
+            height: 280px;
+
+            .imageSlide {
+              width: 280px;
+              height: 280px;
+              object-fit: cover;
+              border-top-left-radius: 32px;
+              border-bottom-right-radius: 32px;
+            }
+          }
+        }
+
+        .textos { 
+          width: 50%;
+          height: auto;
+          min-height: 280px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+
+          .descricao {
+            font-size: $texto-3;
+            line-height: 1.3;
+            font-weight: 400;
+            color: $cor-6;
+            text-align: center;
+            text-align: left;
+          }
+
+          .botoes { 
+            width: 80%;
+            min-width: 280px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            align-self: center;
+
+            a {
+              width: 56px;
+              height: 56px;
+
+              .btn {
+                width: 48px;
+                height: auto;
+
+                &:hover {
+                  scale: 0.9;
+                  transition: all 200ms ease-in-out;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      @media (max-width: $mobile) {
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 24px;
+  
+        .cabeca {
+          margin-top: 36px;
+
+          .tips {
+            margin: 0 16px;
+          }
+        }
+  
+        .body {
+
+          gap: 16px;
+  
+          .textos {
+            width: 100%;
+            min-height: 280px;
+            gap: 16px;
+            align-items: center;
+            justify-content: center;
+
+            .descricao { 
+              width: 80%;
+              text-align: center;
+              margin: 0 auto;
+            }
+          }
+        }
+      }
+    }
+
+
+
+  }
+
+  .modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: $cor-1-overlay;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 15;
+  }
+}
