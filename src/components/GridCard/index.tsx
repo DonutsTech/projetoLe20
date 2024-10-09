@@ -7,7 +7,6 @@ import parceiroJson from '@/data/listaParceiros.json';
 
 const GridCard = () => { 
   
-  console.log(parceiroJson);
 
   return (
     <div>
