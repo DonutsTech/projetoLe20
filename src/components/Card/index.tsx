@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick.css';
 import Style from './Card.module.scss';
 import site from '/public/assets/icon/btn_site.png';
 import pdf from '/public/assets/icon/btn_catalogo.png';
-import compartilhar from '/public/assets/icon/btn_compartilhar.png';
+import compartilhar from '/public/assets/icon/btn_Compartilhar.png';
 import close from '/public/assets/icon/close.svg';
 
 import { useState } from 'react';
