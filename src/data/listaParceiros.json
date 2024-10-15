@@ -18,6 +18,9 @@
     "Presente",
     "Escrita"
   ],
-  "catalogo": "",
+  "catalogo": [{
+    "nome": "Molin 2024",
+    "catalogo": "/assets/empresa/molin/catalogo/catalogo_2024.pdf"
+  }],
   "linkCompartilhar": ""
 }]
