@@ -6,6 +6,6 @@ export interface IParceiro {
   'descricao': string,
   'linkSite'?: string,
   'linkCompartilhar'?: string,
-  'catalogo'?: string,
+  'catalogo': Array<any> | [],
   'tips': Array<string> | [],
 }
