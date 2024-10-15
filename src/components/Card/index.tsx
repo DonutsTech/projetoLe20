@@ -13,13 +13,17 @@ import close from '/public/assets/icon/close.svg';
 import { useState } from 'react';
 import Image from 'next/image';
 import { IParceiro } from '@/types/parceiro';
+import classNames from 'classnames';
+import LeitorPdf from '../LeitorPdf';
 
 
-const Card = ({ nome, imagens, descricao, linkSite, linkCompartilhar, catalogo, tips }: IParceiro) => {
+const Card = ({ nome, imagens, descricao, linkSite, catalogo, linkCompartilhar, tips }: IParceiro) => {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [contentOpen, setContentOpen] = useState(false);
-
+  const [catalogosOpen, setCatalogosOpen] = useState(false);
+  const [selectedCatalog, setSelectedCatalog] = useState<string | null>(null);
+  const [modalCatalog, setModalCatalog] = useState(false);
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -37,6 +41,11 @@ const Card = ({ nome, imagens, descricao, linkSite, linkCompartilhar, catalogo, 
     afterChange: (current: number) => setCurrentSlide(current),
   };
 
+  const handleOpenCatalog = (catalogFile: string) => {
+    setSelectedCatalog(catalogFile);
+    setModalCatalog(true);
+  }
+
 
   return (
     <div className={Style.container}>
@@ -46,17 +55,6 @@ const Card = ({ nome, imagens, descricao, linkSite, linkCompartilhar, catalogo, 
       }}>
         <div className={Style.overlay} />
         <h3 className={Style.titulo}>{nome}</h3>
-        <div className={Style.botoes}>
-          <a href={linkSite} target='_blank' rel='noreferrer' title={`Site || ${nome}`}>
-            <Image src={site} alt="Site" className={Style.btn} />
-          </a>
-          <a href={catalogo} target='_blank' rel='noreferrer'>
-            <Image src={pdf} alt="Catalogo" className={Style.btn} />
-          </a>
-          <a href={linkCompartilhar} target='_blank' rel='noreferrer'>
-            <Image src={compartilhar} alt="Compartilhar" className={Style.btn} />
-          </a>
-        </div>
         <div className={Style.slide}>
           <Slide {...settings} className={Style.boxSlide} draggable={false}>
             {imagens.map((img, index) =>
@@ -105,9 +103,24 @@ const Card = ({ nome, imagens, descricao, linkSite, linkCompartilhar, catalogo, 
                   <a href={linkSite} target='_blank' rel='noreferrer' title={`Site || ${nome}`}>
                     <Image src={site} alt="Site" className={Style.btn} />
                   </a>
-                  <a href={catalogo} target='_blank' rel='noreferrer'>
+
+                  <div className={Style.catalogos} onClick={() => { setCatalogosOpen(!catalogosOpen) }}>
                     <Image src={pdf} alt="Catalogo" className={Style.btn} />
-                  </a>
+
+                    <div className={classNames({
+                      [Style.overlay]: catalogosOpen,
+                      [Style.off]: !catalogosOpen,
+                    })}>
+                      {catalogo.map((item, index) =>
+                        <span key={index}
+                          className={Style.catalogosItem}
+                          onClick={() => { handleOpenCatalog(item.catalogo) }}
+                        > {item.nome}
+                        </span>)}
+                    </div>
+
+                  </div>
+
                   <a href={linkCompartilhar} target='_blank' rel='noreferrer'>
                     <Image src={compartilhar} alt="Compartilhar" className={Style.btn} />
                   </a>
@@ -121,8 +134,21 @@ const Card = ({ nome, imagens, descricao, linkSite, linkCompartilhar, catalogo, 
         <div className={Style.modal} onClick={() => {
           setModalOpen(false)
           setContentOpen(false)
+          setSelectedCatalog(null)
+          setModalCatalog(false)
         }} />
       }
+      {selectedCatalog && modalCatalog && (
+        <div className={Style.modalCatalog}>
+          <button className={Style.btnClose} onClick={() => {
+            setModalCatalog(false)
+            setSelectedCatalog(null)
+          }}>
+            <Image src={close} alt="Fechar" />
+          </button>
+          <LeitorPdf file={selectedCatalog} />
+        </div>
+      )}
     </div>
   );
 };
