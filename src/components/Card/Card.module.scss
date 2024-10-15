@@ -22,7 +22,7 @@
       z-index: 1;
       border-top-left-radius: 32px;
       border-bottom-right-radius: 32px;
-      display: none;
+      display: block;
     }
 
     .slide {
@@ -56,36 +56,8 @@
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      display: none;
+      display: block;
     }
-
-    .botoes {
-      display: none;
-      width: 100%;
-      height: 64px;
-      align-items: center;
-      justify-content: space-around;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      z-index: 2;
-
-      a {
-        width: 56px;
-        height: 56px;
-
-        .btn {
-          width: 48px;
-          height: auto;
-
-          &:hover {
-            scale: 0.9;
-            transition: all 200ms ease-in-out;
-          }
-        }
-      }
-    }
-
 
 
     &:hover {
@@ -93,20 +65,15 @@
 
 
       .overlay {
-        display: block;
+        display: none;
       }
 
       .titulo {
-        display: block;
+        display: none;
       }
 
       .botoes {
         display: flex;
-      }
-
-      .slide {
-        opacity: 0.8;
-        filter: blur(2px);
       }
 
     }
@@ -173,7 +140,7 @@
           height: auto;
         }
       }
-    
+
       .cabeca {
         width: 100%;
         height: auto;
@@ -238,7 +205,7 @@
           }
         }
 
-        .textos { 
+        .textos {
           width: 50%;
           height: auto;
           min-height: 280px;
@@ -257,7 +224,7 @@
             text-align: left;
           }
 
-          .botoes { 
+          .botoes {
             width: 80%;
             min-width: 280px;
             height: 64px;
@@ -276,7 +243,64 @@
 
                 &:hover {
                   scale: 0.9;
+                  cursor: pointer;
                   transition: all 200ms ease-in-out;
+                }
+              }
+            }
+            .catalogos {
+              position: relative;
+
+              .btn {
+                width: 48px;
+                height: auto;
+
+                &:hover {
+                  cursor: pointer;
+                  scale: 0.9;
+                  transition: all 200ms ease-in-out;
+                }
+
+              }
+              .overlay {
+                width: 260px;
+                height: auto;
+                background-color: rgba($color: #000000, $alpha: .5);
+                position: absolute;
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 8px;
+                top: -100%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 2;
+                padding: 16px;
+
+                .catalogosItem {
+                  width: auto;
+                  font-size: 16px;
+                  font-weight: bold;
+                  color: $cor-6;
+                  text-align: center;
+                  padding: 4px 8px;
+                  background-color: $cor-4-1;
+                  border-radius: 16px;
+                  z-index: 3;
+      
+                  &:hover { 
+                    cursor: pointer;
+                    scale: 1.1;
+                    transition: all 200ms ease-in-out;
+                  }
+                }
+              }
+              .off {
+                display: none;
+
+                .catalogosItem {
+                  display: none;
                 }
               }
             }
@@ -288,7 +312,7 @@
         flex-direction: column;
         justify-content: space-around;
         gap: 24px;
-  
+
         .cabeca {
           margin-top: 36px;
 
@@ -296,11 +320,11 @@
             margin: 0 16px;
           }
         }
-  
+
         .body {
 
           gap: 16px;
-  
+
           .textos {
             width: 100%;
             min-height: 280px;
@@ -308,7 +332,7 @@
             align-items: center;
             justify-content: center;
 
-            .descricao { 
+            .descricao {
               width: 80%;
               text-align: center;
               margin: 0 auto;
@@ -322,6 +346,51 @@
 
   }
 
+  .modalCatalog { 
+    width: 95vw;
+    height: 95vh;
+    min-width: 300px;
+    background-color: $cor-1;
+    z-index: 17;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-top-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    .btnClose {
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background-color: $cor-5-1;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      outline: none;
+
+      &:hover {
+        scale: 0.9;
+        transition: all 200ms ease-in-out;
+      }
+
+      img {
+        width: 80%;
+        height: auto;
+      }
+    }
+  }
+
   .modal {
     width: 100vw;
     height: 100vh;
@@ -331,4 +400,5 @@
     left: 0;
     z-index: 15;
   }
+
 }
