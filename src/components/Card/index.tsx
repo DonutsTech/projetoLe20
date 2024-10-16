@@ -114,7 +114,7 @@ const Card = ({ nome, imagens, descricao, linkSite, catalogo, linkCompartilhar, 
                       {catalogo.map((item, index) =>
                         <span key={index}
                           className={Style.catalogosItem}
-                          onClick={() => { handleOpenCatalog(item.catalogo) }}
+                          onClick={() => { handleOpenCatalog(item.catalogo); console.log(selectedCatalog)}}
                         > {item.nome}
                         </span>)}
                     </div>
@@ -138,7 +138,7 @@ const Card = ({ nome, imagens, descricao, linkSite, catalogo, linkCompartilhar, 
           setModalCatalog(false)
         }} />
       }
-      {selectedCatalog && modalCatalog && (
+      { selectedCatalog && modalCatalog && (
         <div className={Style.modalCatalog}>
           <button className={Style.btnClose} onClick={() => {
             setModalCatalog(false)

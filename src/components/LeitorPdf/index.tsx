@@ -1,19 +1,17 @@
 "use client";
 
-// import { useEffect, useState } from "react";
-import Style from './LeitorPdf.module.scss';
+import Style from './LeitorPdf.module.scss'; // Estilos do componente
+
 
 interface ILeitorPdfProps {
-  file: string;
+  file: string; // Caminho do PDF
 }
 
 const LeitorPdf = ({ file }: ILeitorPdfProps) => {
-  // const [numPages, setNumPages] = useState<number | null>(null);
-  // const [pageNumber, setPageNumber] = useState(1);
 
   return (
     <div className={Style.container}>
-      <p>Bora Codar!{file}</p>
+      <object data={file} type="application/pdf" width="100%" height="100%" />
     </div>
   );
 };
