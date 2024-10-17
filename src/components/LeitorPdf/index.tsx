@@ -13,23 +13,35 @@ interface ILeitorPdfProps {
 const LeitorPdf = ({ file }: ILeitorPdfProps) => {
   const [pages, setPages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPdf = async () => {
+      setLoading(true);
+      setError(null); // Reseta o erro antes de tentar buscar novamente
+
       try {
-        setLoading(true);
         const response = await fetch('/api/download', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ url: file }),
         });
+
+        if (!response.ok) {
+          throw new Error('Erro ao fazer o download do arquivo PDF.');
+        }
+
         const data = await response.json();
+
         if (data.fileContent) {
           const pdfImages = await convertPdfToImages(data.fileContent);
           setPages(pdfImages);
+        } else {
+          throw new Error('O conteúdo do arquivo PDF não foi encontrado.');
         }
       } catch (error) {
         console.error('Erro ao carregar o PDF:', error);
+        setError('Ocorreu um erro ao carregar o catálogo.');
       } finally {
         setLoading(false);
       }
@@ -40,6 +52,10 @@ const LeitorPdf = ({ file }: ILeitorPdfProps) => {
 
   if (loading) {
     return <div className={styles.loading}>Carregando catálogo...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
   }
 
   return (
