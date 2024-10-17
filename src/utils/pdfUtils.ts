@@ -31,5 +31,5 @@ export async function convertPdfToImages(pdfBase64: string): Promise<string[]> {
     }
   }
 
-  return images;
-};
+  return images; // Retornando as imagens para uso posterior
+}
