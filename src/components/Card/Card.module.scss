@@ -323,12 +323,13 @@
 
         .body {
 
-          gap: 16px;
+          gap: 8px;
 
           .textos {
+            margin-top: -16px;
             width: 100%;
-            min-height: 280px;
-            gap: 16px;
+            // min-height: 280px;
+            gap: 8px;
             align-items: center;
             justify-content: center;
 
