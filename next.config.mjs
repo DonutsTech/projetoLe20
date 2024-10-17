@@ -11,6 +11,7 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
+  output: 'export',
   webpack(config) {
     return config;
   },
