@@ -4,6 +4,11 @@ import { PDFDocumentProxy } from 'pdfjs-dist/types/src/display/api';
 pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.7.76/build/pdf.worker.mjs";
 
 export async function convertPdfToImages(pdfBase64: string): Promise<string[]> {
+
+  if (typeof window === 'undefined') {
+    throw new Error('Esta função deve ser executada no cliente.');
+  }
+
   const pdfData = atob(pdfBase64);
   const loadingTask = pdfjsLib.getDocument({ data: pdfData });
   const pdf: PDFDocumentProxy = await loadingTask.promise;
