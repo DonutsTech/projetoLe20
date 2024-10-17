@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 import Menu from "@/components/Menu";
@@ -16,17 +15,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Polyfill para Promise.withResolvers
   if (!Promise.withResolvers) {
     Promise.withResolvers = function <T>() {
-      // Inicialização das variáveis resolve e reject
-      let resolve: (value: T | PromiseLike<T>) => void = () => {}; // Valor padrão
-      let reject: (reason?: unknown) => void = () => {}; // Valor padrão
+      let resolve: (value: T | PromiseLike<T>) => void = () => {}; 
+      let reject: (reason?: unknown) => void = () => {}; 
 
-      // Criar a Promise e atribuir resolve e reject
       const promise = new Promise<T>((res, rej) => {
-        resolve = res; // Atribuição da função resolve
-        reject = rej; // Atribuição da função reject
+        resolve = res; 
+        reject = rej; 
       });
 
       return { promise, resolve, reject };
