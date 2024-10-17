@@ -1,9 +1,10 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 import Menu from "@/components/Menu";
 import Footer from "@/components/Footer";
 import Background from "@/components/Background";
-
+import 'core-js/stable'; 
 
 export const metadata: Metadata = {
   title: "Le'20 Representações",
@@ -15,12 +16,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Polyfill para Promise.withResolvers
+  if (!Promise.withResolvers) {
+    Promise.withResolvers = function <T>() {
+      // Inicialização das variáveis resolve e reject
+      let resolve: (value: T | PromiseLike<T>) => void = () => {}; // Valor padrão
+      let reject: (reason?: unknown) => void = () => {}; // Valor padrão
+
+      // Criar a Promise e atribuir resolve e reject
+      const promise = new Promise<T>((res, rej) => {
+        resolve = res; // Atribuição da função resolve
+        reject = rej; // Atribuição da função reject
+      });
+
+      return { promise, resolve, reject };
+    };
+  }
+
   return (
     <html lang="pt-br">
       <body>
         <Menu />
         <main>
-        {children}
+          {children}
         </main>
         <Footer />
         <Background />
