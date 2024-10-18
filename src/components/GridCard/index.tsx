@@ -17,7 +17,6 @@ const GridCard = () => {
           imagens={parceiro.imagens}
           descricao={parceiro.descricao}
           linkSite={parceiro.linkSite}
-          linkCompartilhar={parceiro.linkCompartilhar}
           catalogo={parceiro.catalogo}
           tips={parceiro.tips}
 
