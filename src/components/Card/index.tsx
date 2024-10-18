@@ -7,8 +7,9 @@ import 'slick-carousel/slick/slick.css';
 import Style from './Card.module.scss';
 import site from '/public/assets/icon/btn_site.png';
 import pdf from '/public/assets/icon/btn_catalogo.png';
-import compartilhar from '/public/assets/icon/btn_Compartilhar.png';
 import close from '/public/assets/icon/close.svg';
+import down from '/public/assets/icon/download_icon.svg';
+import share from '/public/assets/icon/compartilha_icon.svg';
 
 import { useState } from 'react';
 import Image from 'next/image';
@@ -17,7 +18,7 @@ import classNames from 'classnames';
 import LeitorPdf from '../LeitorPdf';
 
 
-const Card = ({ nome, imagens, descricao, linkSite, catalogo, linkCompartilhar, tips }: IParceiro) => {
+const Card = ({ nome, imagens, descricao, linkSite, catalogo, tips }: IParceiro) => {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [contentOpen, setContentOpen] = useState(false);
@@ -114,16 +115,12 @@ const Card = ({ nome, imagens, descricao, linkSite, catalogo, linkCompartilhar, 
                       {catalogo.map((item, index) =>
                         <span key={index}
                           className={Style.catalogosItem}
-                          onClick={() => { handleOpenCatalog(item.catalogo); console.log(selectedCatalog)}}
+                          onClick={() => { handleOpenCatalog(item.catalogo); console.log(selectedCatalog) }}
                         > {item.nome}
                         </span>)}
                     </div>
 
                   </div>
-
-                  <a href={linkCompartilhar} target='_blank' rel='noreferrer'>
-                    <Image src={compartilhar} alt="Compartilhar" className={Style.btn} />
-                  </a>
                 </div>
               </div>
             </div>
@@ -138,7 +135,7 @@ const Card = ({ nome, imagens, descricao, linkSite, catalogo, linkCompartilhar, 
           setModalCatalog(false)
         }} />
       }
-      { selectedCatalog && modalCatalog && (
+      {selectedCatalog && modalCatalog && (
         <div className={Style.modalCatalog}>
           <button className={Style.btnClose} onClick={() => {
             setModalCatalog(false)
@@ -147,6 +144,27 @@ const Card = ({ nome, imagens, descricao, linkSite, catalogo, linkCompartilhar, 
             <Image src={close} alt="Fechar" />
           </button>
           <LeitorPdf file={selectedCatalog} />
+          <div className={Style.btnBox}>
+            <button
+              onClick={() => {
+                window.open(selectedCatalog, '_blank', 'noopener,noreferrer');
+              }}
+            >
+              <Image src={down} alt='Download' />
+            </button>
+            <button
+              onClick={() => {
+                const shareMessage = `Olá, veja o Catálogo da empresa ${nome}, não perca tempo entre em contato e faça o seu orçamento! (34) 99127-8990  https://le20rep.com/`;
+                const zapShare = `https://wa.me/?text=${encodeURIComponent(selectedCatalog + ' ' + shareMessage )}`;
+
+
+
+                window.open(zapShare, '_blank', 'noopener,noreferrer')
+              }}
+            >
+              <Image src={share} alt='Compartilhar' />
+            </button>
+          </div>
         </div>
       )}
     </div>
