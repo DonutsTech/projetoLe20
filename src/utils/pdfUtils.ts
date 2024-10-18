@@ -6,7 +6,13 @@ if (typeof window !== 'undefined') {
   pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.7.76/legacy/build/pdf.worker.mjs";
 }
 
-export async function convertPdfToImages(pdfBase64: string): Promise<string[]> {
+interface PdfImageLoader {
+  numPages: number;
+  getPageImage: (pageNum: number) => Promise<string>;
+}
+
+// Função atualizada para converter uma página de cada vez
+export async function convertPdfPageToImage(pdfBase64: string): Promise<PdfImageLoader> {
   if (typeof window === 'undefined') {
     throw new Error('Esta função deve ser executada no cliente.');
   }
@@ -14,22 +20,30 @@ export async function convertPdfToImages(pdfBase64: string): Promise<string[]> {
   const pdfData = atob(pdfBase64);
   const loadingTask = pdfjsLib.getDocument({ data: pdfData });
   const pdf: PDFDocumentProxy = await loadingTask.promise;
-  const numPages = pdf.numPages;
-  const images: string[] = [];
 
-  for (let i = 1; i <= numPages; i++) {
-    const page = await pdf.getPage(i);
+  const getPageImage = async (pageNum: number): Promise<string> => {
+    const page = await pdf.getPage(pageNum);
     const viewport = page.getViewport({ scale: 1.5 });
+    
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
-    if (context) {
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
 
-      await page.render({ canvasContext: context, viewport }).promise;
-      images.push(canvas.toDataURL('image/jpeg'));
+    if (!context) {
+      throw new Error('Falha ao obter o contexto do canvas.');
     }
-  }
 
-  return images; // Retornando as imagens para uso posterior
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+
+    // Renderizando a página no canvas
+    await page.render({ canvasContext: context, viewport }).promise;
+
+    // Retorna a imagem como base64 (JPEG)
+    return canvas.toDataURL('image/jpeg');
+  };
+
+  return {
+    numPages: pdf.numPages,
+    getPageImage,
+  };
 }

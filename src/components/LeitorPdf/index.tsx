@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
-import { convertPdfToImages } from '@/utils/pdfUtils';
+import { convertPdfPageToImage } from '@/utils/pdfUtils';
 import Image from 'next/image';
 import styles from './LeitorPdf.module.scss';
+import logo from '/public/assets/logo/isoLe20.png';
 
 interface ILeitorPdfProps {
   file: string;
@@ -13,27 +14,19 @@ interface ILeitorPdfProps {
 const LeitorPdf = ({ file }: ILeitorPdfProps) => {
   const [pages, setPages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
-  const [isSinglePage, setIsSinglePage] = useState(false); // Estado para definir se é uma página ou dupla
+  const [numPages, setNumPages] = useState(0);
+  const [isSinglePage, setIsSinglePage] = useState(false);
+  const flipBookRef = useRef<HTMLFlipBook>(null);
+  const [pdfBase64, setPdfBase64] = useState<string | null>(null);
 
-  // Função para verificar a largura da tela
   const handleResize = () => {
-    if (window.innerWidth < 780) {
-      setIsSinglePage(true);
-    } else {
-      setIsSinglePage(false);
-    }
+    setIsSinglePage(window.innerWidth < 780);
   };
 
   useEffect(() => {
-    // Verificar o tamanho da tela ao carregar
     handleResize();
-
-    // Adicionar um listener para alterações no tamanho da tela
     window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
@@ -46,9 +39,30 @@ const LeitorPdf = ({ file }: ILeitorPdfProps) => {
           body: JSON.stringify({ url: file }),
         });
         const data = await response.json();
+
         if (data.fileContent) {
-          const pdfImages = await convertPdfToImages(data.fileContent);
-          setPages(pdfImages);
+          setPdfBase64(data.fileContent);
+
+          const { numPages, getPageImage } = await convertPdfPageToImage(data.fileContent);
+          setNumPages(numPages);
+
+          const initialPages = await Promise.all(
+            Array.from({ length: 11 }, (_, index) => getPageImage(index + 1))
+          );
+          setPages(initialPages);
+
+          const loadRemainingPages = async () => {
+            for (let i = 11; i < numPages; i++) {
+              const pageImage = await getPageImage(i + 1);
+              setPages((prev) => {
+                const newPages = [...prev];
+                newPages[i] = pageImage;
+                return newPages;
+              });
+            }
+          };
+
+          loadRemainingPages();
         }
       } catch (error) {
         console.error('Erro ao carregar o PDF:', error);
@@ -60,15 +74,30 @@ const LeitorPdf = ({ file }: ILeitorPdfProps) => {
     fetchPdf();
   }, [file]);
 
+  const handlePageFlip = async (pageIndex: number) => {
+    if (!pages[pageIndex] && pageIndex < numPages && pdfBase64) {
+      const { getPageImage } = await convertPdfPageToImage(pdfBase64);
+      const pageImage = await getPageImage(pageIndex + 1);
+      setPages((prev) => {
+        const newPages = [...prev];
+        newPages[pageIndex] = pageImage;
+        return newPages;
+      });
+    }
+  };
+
   if (loading) {
-    return <div className={styles.loading}>Carregando catálogo...</div>;
+    return <div className={styles.loading}>
+      <Image src={logo} alt="Logo" width={100} height={100} />
+    </div>;
   }
 
   return (
     <div className={styles.container}>
-      <HTMLFlipBook 
-        width={isSinglePage ? 400 : 550} // Ajusta a largura para páginas únicas ou duplas
-        height={isSinglePage ? 533 : 733} // Ajusta a altura proporcional
+      <HTMLFlipBook
+        ref={flipBookRef} 
+        width={isSinglePage ? 400 : 550}
+        height={isSinglePage ? 533 : 733}
         size="stretch"
         minWidth={300}
         maxWidth={1000}
@@ -76,14 +105,19 @@ const LeitorPdf = ({ file }: ILeitorPdfProps) => {
         maxHeight={1533}
         showCover={true}
         drawShadow={true}
-        usePortrait={isSinglePage} // Exibe em modo retrato quando for uma página
+        usePortrait={isSinglePage}
         flippingTime={500}
         startPage={0}
         className={styles.book}
+        onFlip={(e) => handlePageFlip(e.data)} 
       >
-        {pages.map((page, index) => (
+        {Array.from({ length: numPages }, (_, index) => (
           <div key={index} className={styles.page}>
-            <Image src={page} alt={`Página ${index + 1}`} width={280} height={396} />
+            {pages[index] ? (
+              <Image src={pages[index]} alt={`Página ${index + 1}`} width={280} height={396} />
+            ) : (
+              <div>Carregando...</div>
+            )}
           </div>
         ))}
       </HTMLFlipBook>

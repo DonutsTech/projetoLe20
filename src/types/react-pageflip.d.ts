@@ -1,6 +1,10 @@
 declare module 'react-pageflip' {
   import { Component } from 'react';
 
+  interface FlipEvent {
+    data: number; // Esta propriedade depende do valor do evento que você recebe no flip.
+  }
+
   interface HTMLFlipBookProps {
     width: number;
     height: number;
@@ -17,6 +21,7 @@ declare module 'react-pageflip' {
     className?: string;
     style?: React.CSSProperties;
     children?: React.ReactNode;
+    onFlip?: (e: FlipEvent) => void; // Adicionando a propriedade onFlip
   }
 
   export default class HTMLFlipBook extends Component<HTMLFlipBookProps> {}

@@ -12,7 +12,6 @@
     width: 90%;
     min-width: 300px;
     height: 80%;
-    // box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 
     .page {
       background-color: white;
@@ -39,8 +38,18 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  font-size: 1.2rem;
-  color: #333;
+
+  img { 
+    height: 48px;
+    width: auto;
+    animation: spin 1s ease-in-out infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 @media (max-width: 768px) {
