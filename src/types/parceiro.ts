@@ -10,7 +10,6 @@ export interface IParceiro {
   'imagens': Array<string> | [],
   'descricao': string,
   'linkSite'?: string,
-  'linkCompartilhar'?: string,
   'catalogo': Array<ICatalogo> | [],
   'tips': Array<string> | [],
 }
