@@ -5,6 +5,7 @@ export async function POST(request: Request) {
     try {
         // Parseando o corpo da requisição
         const { url } = await request.json();
+        console.log('URL recebida:', url); // Adicionando log
 
         // Verificando se a URL é válida
         if (!url || !/^https?:\/\//.test(url)) {
@@ -19,6 +20,8 @@ export async function POST(request: Request) {
             },
         });
 
+        console.log('Resposta recebida do S3:', response.status); // Adicionando log
+
         // Convertendo o arquivo PDF em base64
         const base64 = Buffer.from(response.data).toString('base64');
 
@@ -27,7 +30,7 @@ export async function POST(request: Request) {
         responseHeaders.set('Access-Control-Allow-Origin', '*');
         responseHeaders.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
         responseHeaders.set('Access-Control-Allow-Headers', 'Content-Type');
-        responseHeaders.set('Content-Type', 'application/json'); // Tipo de conteúdo
+        responseHeaders.set('Content-Type', 'application/json');
 
         // Respondendo com o conteúdo base64
         return NextResponse.json({ fileContent: base64 }, { headers: responseHeaders });
