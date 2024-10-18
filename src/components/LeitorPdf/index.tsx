@@ -38,31 +38,50 @@ const LeitorPdf = ({ file }: ILeitorPdfProps) => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ url: file }),
         });
+
+        // Verificação de erro na resposta
+        if (!response.ok) {
+          throw new Error(`Erro na requisição: ${response.statusText}`);
+        }
+
         const data = await response.json();
 
+        // Verifica se o conteúdo do PDF foi retornado
         if (data.fileContent) {
           setPdfBase64(data.fileContent);
-
           const { numPages, getPageImage } = await convertPdfPageToImage(data.fileContent);
+
+          // Verifica se o número de páginas é válido
+          if (numPages <= 0) {
+            throw new Error('O PDF não contém páginas.');
+          }
+
           setNumPages(numPages);
 
           const initialPages = await Promise.all(
             Array.from({ length: 11 }, (_, index) => getPageImage(index + 1))
           );
+
           setPages(initialPages);
 
           const loadRemainingPages = async () => {
             for (let i = 11; i < numPages; i++) {
-              const pageImage = await getPageImage(i + 1);
-              setPages((prev) => {
-                const newPages = [...prev];
-                newPages[i] = pageImage;
-                return newPages;
-              });
+              try {
+                const pageImage = await getPageImage(i + 1);
+                setPages((prev) => {
+                  const newPages = [...prev];
+                  newPages[i] = pageImage;
+                  return newPages;
+                });
+              } catch (error) {
+                console.error(`Erro ao carregar a página ${i + 1}:`, error);
+              }
             }
           };
 
           loadRemainingPages();
+        } else {
+          throw new Error('Conteúdo do PDF não disponível.');
         }
       } catch (error) {
         console.error('Erro ao carregar o PDF:', error);
@@ -76,20 +95,26 @@ const LeitorPdf = ({ file }: ILeitorPdfProps) => {
 
   const handlePageFlip = async (pageIndex: number) => {
     if (!pages[pageIndex] && pageIndex < numPages && pdfBase64) {
-      const { getPageImage } = await convertPdfPageToImage(pdfBase64);
-      const pageImage = await getPageImage(pageIndex + 1);
-      setPages((prev) => {
-        const newPages = [...prev];
-        newPages[pageIndex] = pageImage;
-        return newPages;
-      });
+      try {
+        const { getPageImage } = await convertPdfPageToImage(pdfBase64);
+        const pageImage = await getPageImage(pageIndex + 1);
+        setPages((prev) => {
+          const newPages = [...prev];
+          newPages[pageIndex] = pageImage;
+          return newPages;
+        });
+      } catch (error) {
+        console.error(`Erro ao carregar a imagem da página ${pageIndex + 1}:`, error);
+      }
     }
   };
 
   if (loading) {
-    return <div className={styles.loading}>
-      <Image src={logo} alt="Logo" width={100} height={100} />
-    </div>;
+    return (
+      <div className={styles.loading}>
+        <Image src={logo} alt="Logo" width={100} height={100} />
+      </div>
+    );
   }
 
   return (
