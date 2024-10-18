@@ -104,10 +104,8 @@ const Card = ({ nome, imagens, descricao, linkSite, catalogo, tips }: IParceiro)
                   <a href={linkSite} target='_blank' rel='noreferrer' title={`Site || ${nome}`}>
                     <Image src={site} alt="Site" className={Style.btn} />
                   </a>
-
                   <div className={Style.catalogos} onClick={() => { setCatalogosOpen(!catalogosOpen) }}>
                     <Image src={pdf} alt="Catalogo" className={Style.btn} />
-
                     <div className={classNames({
                       [Style.overlay]: catalogosOpen,
                       [Style.off]: !catalogosOpen,
@@ -154,12 +152,15 @@ const Card = ({ nome, imagens, descricao, linkSite, catalogo, tips }: IParceiro)
             </button>
             <button
               onClick={() => {
-                const shareMessage = `Olá, veja o Catálogo da empresa ${nome}, não perca tempo entre em contato e faça o seu orçamento! (34) 99127-8990  https://le20rep.com/`;
-                const zapShare = `https://wa.me/?text=${encodeURIComponent(selectedCatalog + ' ' + shareMessage )}`;
+                const shareMessage = `Olá, veja o Catálogo da empresa ${nome},\n\n` +
+                  `${selectedCatalog} \n\n` +
+                  `Não perca tempo, entre em contato e faça o seu orçamento!\n` +
+                  `(34) 99127-8990\n\n` +
+                  `Saiba mais no site: https://le20rep.com/`;
 
+                const zapShare = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
 
-
-                window.open(zapShare, '_blank', 'noopener,noreferrer')
+                window.open(zapShare, '_blank', 'noopener,noreferrer');
               }}
             >
               <Image src={share} alt='Compartilhar' />
