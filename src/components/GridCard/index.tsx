@@ -2,15 +2,16 @@
 
 // import { IParceiro } from "@/types/parceiro";
 import Card from "../Card";
-import parceiroJson from '@/data/listaParceiros.json';
+import Style from './GridCard.module.scss';
+import { IParceiro } from "@/types/parceiro";
 
 
-const GridCard = () => { 
+const GridCard = ({parceiros}: {parceiros: Array<IParceiro>}  ) => { 
   
 
   return (
-    <div>
-      {parceiroJson.map((parceiro, index) => {
+    <div className={Style.container}>
+      {parceiros.map((parceiro, index) => {
         return (
           <Card key={index} 
           nome={parceiro.nome}
@@ -19,7 +20,6 @@ const GridCard = () => {
           linkSite={parceiro.linkSite}
           catalogo={parceiro.catalogo}
           tips={parceiro.tips}
-
           />
         )
       })}

@@ -3,6 +3,7 @@
 export interface ICatalogo {
   nome: string,
   catalogo: string,
+  contPag?: number,
 }
 
 export interface IParceiro {

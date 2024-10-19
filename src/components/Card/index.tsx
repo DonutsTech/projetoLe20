@@ -25,6 +25,8 @@ const Card = ({ nome, imagens, descricao, linkSite, catalogo, tips }: IParceiro)
   const [catalogosOpen, setCatalogosOpen] = useState(false);
   const [selectedCatalog, setSelectedCatalog] = useState<string | null>(null);
   const [modalCatalog, setModalCatalog] = useState(false);
+  const [nomeSelecionado, setNomeSelecionado] = useState<string>('');
+  const [contPag, setContPag] = useState<number>(11);
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -72,6 +74,7 @@ const Card = ({ nome, imagens, descricao, linkSite, catalogo, tips }: IParceiro)
             <button className={Style.btnClose} onClick={() => {
               setModalOpen(false)
               setContentOpen(false)
+              setCatalogosOpen(false);
             }}>
               <Image src={close} alt="Fechar" />
             </button>
@@ -113,7 +116,11 @@ const Card = ({ nome, imagens, descricao, linkSite, catalogo, tips }: IParceiro)
                       {catalogo.map((item, index) =>
                         <span key={index}
                           className={Style.catalogosItem}
-                          onClick={() => { handleOpenCatalog(item.catalogo); console.log(selectedCatalog) }}
+                          onClick={() => { 
+                            handleOpenCatalog(item.catalogo); 
+                            setNomeSelecionado(item.nome); 
+                            setContPag(item.contPag || 11);
+                          }}
                         > {item.nome}
                         </span>)}
                     </div>
@@ -141,7 +148,7 @@ const Card = ({ nome, imagens, descricao, linkSite, catalogo, tips }: IParceiro)
           }}>
             <Image src={close} alt="Fechar" />
           </button>
-          <LeitorPdf file={selectedCatalog} />
+          <LeitorPdf file={selectedCatalog} contPag={contPag} />
           <div className={Style.btnBox}>
             <button
               onClick={() => {
@@ -152,7 +159,8 @@ const Card = ({ nome, imagens, descricao, linkSite, catalogo, tips }: IParceiro)
             </button>
             <button
               onClick={() => {
-                const shareMessage = `Olá, veja o Catálogo da empresa ${nome},\n\n` +
+                const shareMessage = `Olá, veja o ${nomeSelecionado} da empresa ${nome},\n\n` +
+                  `Clique no link a baixo faça o download do catálogo \n\n` +
                   `${selectedCatalog} \n\n` +
                   `Não perca tempo, entre em contato e faça o seu orçamento!\n` +
                   `(34) 99127-8990\n\n` +

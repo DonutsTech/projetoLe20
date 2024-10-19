@@ -1,27 +1,84 @@
 [{
-  "nome": "Molin do Brasil",
-  "imagens": [
-    "/assets/empresa/molin/imagem/Molin01.png",
-    "/assets/empresa/molin/imagem/Molin02.png",
-    "/assets/empresa/molin/imagem/Molin03.png",
-    "/assets/empresa/molin/imagem/Molin04.png",
-    "/assets/empresa/molin/imagem/Molin05.png"
-  ],
-  "descricao": "Desde 1948 em Portugal e há 36 anos no Brasil, a Molin foca na excelência e satisfação dos consumidores. Empoderamos todos a escrever suas histórias, inovando e buscando qualidade diariamente.",
-  "linkSite": "https://molin.com.br/",
-  "tips": [
-    "Papelaria",
-    "Escolar",
-    "Fofa",
-    "Office",
-    "Licenças",
-    "Presente",
-    "Escrita"
-  ],
-  "catalogo": [{
-    "nome": "Molin 2024",
-    "catalogo": "https://le20catalogos.s3.amazonaws.com/CATALOGO_MOLIN_2024_OK.pdf"
+    "nome": "Molin do Brasil",
+    "imagens": [
+      "/assets/empresa/molin/imagem/Molin01.png",
+      "/assets/empresa/molin/imagem/Molin02.png",
+      "/assets/empresa/molin/imagem/Molin03.png",
+      "/assets/empresa/molin/imagem/Molin04.png",
+      "/assets/empresa/molin/imagem/Molin05.png"
+    ],
+    "descricao": "Desde 1948 em Portugal e há 36 anos no Brasil, a Molin foca na excelência e satisfação dos consumidores. Empoderamos todos a escrever suas histórias, inovando e buscando qualidade diariamente.",
+    "linkSite": "https://molin.com.br/",
+    "tips": [
+      "Papelaria",
+      "Escolar",
+      "Fofa",
+      "Office",
+      "Licenças",
+      "Presente",
+      "Escrita"
+    ],
+    "catalogo": [{
+      "nome": "Catálogo 2024",
+      "catalogo": "https://le20catalogos.s3.amazonaws.com/CATALOGO_MOLIN_2024_OK.pdf",
+      "contPag": 266
 
-  }]
-}]
-
+    }]
+  },
+  {
+    "nome": "Royal Toys",
+    "imagens": [
+      "/assets/empresa/royal/imagem/Royal01.png",
+      "/assets/empresa/royal/imagem/Royal02.png",
+      "/assets/empresa/royal/imagem/Royal03.png",
+      "/assets/empresa/royal/imagem/Royal04.png",
+      "/assets/empresa/royal/imagem/Royal05.png"
+    ],
+    "descricao": "A Royal Toys, fundada em 2017, é especializada em brinquedos e doces da China e Turquia. Com sede no Paraná, destaca-se pela linha Ovo Toys e licenças da Liga da Justiça e Bob Esponja, garantindo qualidade e inovação.",
+    "linkSite": "https://royaltoys.com.br/",
+    "tips": [
+      "Brinquedos",
+      "Doces",
+      "Check-out",
+      "Festas",
+      "Licenças",
+      "Presente"
+    ],
+    "catalogo": [{
+      "nome": "Catálogo-Doces 2024",
+      "catalogo": "https://le20catalogos.s3.amazonaws.com/catologo_royal_doce_2024.pdf",
+      "contPag": 12
+    },{
+      "nome": "Catálogo-Eletrônicos 2024",
+      "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_royal_eletronico_2024.pdf",
+      "contPag": 6
+    },{
+      "nome": "Catálogo-Brinquedos 2024",
+      "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_royal_brinquedo_2024.pdf",
+      "contPag": 26
+    }]
+  },
+  {
+    "nome": "Sid-nyl",
+    "imagens": [
+      "/assets/empresa/sidnyl/imagem/Sidnyl01.png",
+      "/assets/empresa/sidnyl/imagem/Sidnyl02.png",
+      "/assets/empresa/sidnyl/imagem/Sidnyl03.png",
+      "/assets/empresa/sidnyl/imagem/Sidnyl04.png",
+      "/assets/empresa/sidnyl/imagem/Sidnyl05.png"
+    ],
+    "descricao": "Há mais de 40 anos no mercado, a Sid-Nyl lidera o setor de brinquedos no Brasil. Nosso lema: todas as crianças merecem brincar. “Todo dia é dia de brincar!” Acreditamos que a alegria do brincar é essencial para o desenvolvimento infantil e trabalhamos para garantir que isso seja possível para todas as crianças.",
+    "linkSite": "http://sidnyl.com.br/",
+    "tips": [
+      "Bonecas",
+      "Brinquedos",
+      "Presentes",
+      "Licenças"
+    ],
+    "catalogo": [{
+      "nome": "Catálogo 2024",
+      "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_sidnyl_2024.pdf",
+      "contPag": 72
+    }]
+  }
+]

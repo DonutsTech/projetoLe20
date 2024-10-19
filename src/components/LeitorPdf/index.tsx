@@ -9,9 +9,10 @@ import logo from '/public/assets/logo/isoLe20.png';
 
 interface ILeitorPdfProps {
   file: string;
+  contPag: number;
 }
 
-const LeitorPdf = ({ file }: ILeitorPdfProps) => {
+const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
   const [pages, setPages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [numPages, setNumPages] = useState(0);
@@ -59,7 +60,7 @@ const LeitorPdf = ({ file }: ILeitorPdfProps) => {
           setNumPages(numPages);
 
           const initialPages = await Promise.all(
-            Array.from({ length: 11 }, (_, index) => getPageImage(index + 1))
+            Array.from({ length: (contPag > 11 ? 11 : contPag) }, (_, index) => getPageImage(index + 1))
           );
 
           setPages(initialPages);

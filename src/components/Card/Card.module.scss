@@ -262,8 +262,9 @@
 
               }
               .overlay {
-                width: 260px;
+                width: 248px;
                 height: auto;
+                min-height: 64px;
                 background-color: rgba($color: #000000, $alpha: .5);
                 position: absolute;
                 display: flex;
@@ -271,9 +272,9 @@
                 align-items: center;
                 justify-content: flex-start;
                 gap: 8px;
-                top: -100%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                top: -72px;
+                left: 0;
+                transform: translate(-53%, -50%);
                 z-index: 2;
                 padding: 16px;
 
@@ -327,7 +328,6 @@
           .textos {
             margin-top: -16px;
             width: 100%;
-            // min-height: 280px;
             gap: 8px;
             align-items: center;
             justify-content: center;
