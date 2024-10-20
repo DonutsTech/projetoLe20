@@ -160,9 +160,9 @@ const Card = ({ nome, imagens, descricao, linkSite, catalogo, tips }: IParceiro)
             <button
               onClick={() => {
                 const shareMessage = `Olá, veja o ${nomeSelecionado} da empresa ${nome},\n\n` +
-                  `Clique no link a baixo faça o download do catálogo \n\n` +
+                  `Clique no link a baixo e faça o download do catálogo \n\n` +
                   `${selectedCatalog} \n\n` +
-                  `Não perca tempo, entre em contato e faça o seu orçamento!\n` +
+                  `Não perca tempo, entre em contato e solicite o seu orçamento!\n` +
                   `(34) 99127-8990\n\n` +
                   `Saiba mais no site: https://le20rep.com/`;
 
