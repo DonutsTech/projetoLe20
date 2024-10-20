@@ -1,4 +1,56 @@
 [{
+  "nome": "Bicho Esperto",
+  "imagens": [
+    "/assets/empresa/bichoEsperto/imagem/Bicho01.png",
+    "/assets/empresa/bichoEsperto/imagem/Bicho02.png",
+    "/assets/empresa/bichoEsperto/imagem/Bicho03.png",
+    "/assets/empresa/bichoEsperto/imagem/Bicho04.png",
+    "/assets/empresa/bichoEsperto/imagem/Bicho05.png"
+  ],
+  "descricao": "Há mais de 50 anos, a Editora Rideel se destaca por excelência em publicações, principalmente em Direito. Com atualizações contínuas e inovação, oferece conteúdos que superam expectativas, atendendo a estudantes e profissionais. Seu catálogo também abrange segmentos infantojuvenis e licenciados.",
+  "linkSite": "https://www.bichoesperto.com.br/",
+  "tips": [
+    "Livros",
+    "Literatura",
+    "Pedagógico",
+    "Licenças",
+    "Biblicos",
+    "Presentes",
+    "puericultura"
+  ],
+  "catalogo": [{
+    "nome": "Catálogo 2024",
+    "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_bichoEsperto_2024.pdf",
+    "contPag": 98
+  }]
+  
+},
+{
+  "nome": "Carlu Brinquedos",
+  "imagens": [
+    "/assets/empresa/carlu/imagem/Carlu01.png",
+    "/assets/empresa/carlu/imagem/Carlu02.png",
+    "/assets/empresa/carlu/imagem/Carlu03.png",
+    "/assets/empresa/carlu/imagem/Carlu04.png",
+    "/assets/empresa/carlu/imagem/Carlu05.png"
+  ],
+  "descricao": "Nós fabricamos brinquedos que educam. A Carlu Brinquedos nasceu do sonho de uma professora em 1996. Inicialmente em um espaço de 10 m² com 3 funcionários, cresceu com apoio da Prefeitura de Toledo. Atualmente, com 155 colaboradores e sede de 7.500 m², atende todo o Brasil. A Carlu continua expandindo, gerando empregos e oportunidades em Toledo.",
+  "linkSite": "https://www.carlu.com.br/brinquedos/",
+  "tips": [
+    "Brinquedos",
+    "Pedagógico",
+    "Quebra cabeças",
+    "Presentes",
+    "Educativo",
+    "Madeira"
+  ],
+  "catalogo": [{
+    "nome": "Catálogo 2024",
+    "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_carlu_2024.pdf",
+    "contPag": 157
+  }]
+},
+{
     "nome": "Molin do Brasil",
     "imagens": [
       "/assets/empresa/molin/imagem/Molin01.png",
