@@ -51,6 +51,83 @@
   }]
 },
 {
+  "nome": "Cks",
+  "imagens": [
+    "/assets/empresa/cks/imagem/Cks01.png",
+    "/assets/empresa/cks/imagem/Cks02.png",
+    "/assets/empresa/cks/imagem/Cks03.png",
+    "/assets/empresa/cks/imagem/Cks04.png",
+    "/assets/empresa/cks/imagem/Cks05.png"
+  ],
+  "descricao": "Com mais de 25 anos de experiência, a CKS Brinquedos lidera em vendas de brinquedos e artigos esportivos no Brasil. Parcerias com marcas renomadas resultam em produtos icônicos. Oferecemos diversão e qualidade a todas as idades.",
+  "linkSite": "https://cksbrinquedos.com.br/",
+  "tips": [
+    "Brinquedos",
+    "Licenças",
+    "Presentes",
+    "Carrinhos",
+    "Primeira Idade"
+  ],
+  "catalogo": [{
+    "nome": "Catálogo 2024",
+    "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_cks_2024.pdf",
+    "contPag": 149
+  }]
+},
+{
+  "nome": "Dallec",
+  "imagens": [
+    "/assets/empresa/dallec/imagem/Dallec01.png",
+    "/assets/empresa/dallec/imagem/Dallec02.png",
+    "/assets/empresa/dallec/imagem/Dallec03.png",
+    "/assets/empresa/dallec/imagem/Dallec04.png",
+    "/assets/empresa/dallec/imagem/Dallec05.png"
+  ],
+  "descricao": "Celebrando 55 anos, a Dallec oferece o melhor em produtos gráficos com qualidade e bom gosto. Nossa linha inclui caixas decorativas, cartões refinados, papéis de presente exclusivos e uma vasta linha escolar. Garantimos novidades e produtos diferenciados para você.",
+  "linkSite": "https://dallec.com.br/",
+  "tips": [ 
+    "Presentes",
+    "Papelaria",
+    "Festas",
+    "Embalagens",
+    "Cartões"
+  ],
+  "catalogo": [{
+    "nome": "Catálogo 2024",
+    "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_dallec_2024.pdf",
+    "contPag": 68
+  },
+{
+  "nome": "Catálogo Natal 2024",
+  "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_dallec_natal_2024.pdf",
+  "contPag": 30
+}]
+},
+{
+  "nome": "Grupo Dermiwil",
+  "imagens": [
+    "/assets/empresa/dermiwil/imagem/Dermiwil01.png",
+    "/assets/empresa/dermiwil/imagem/Dermiwil02.png",
+    "/assets/empresa/dermiwil/imagem/Dermiwil03.png",
+    "/assets/empresa/dermiwil/imagem/Dermiwil04.png",
+    "/assets/empresa/dermiwil/imagem/Dermiwil05.png"
+  ],
+  "descricao": "Há mais de 60 anos no mercado, atuamos com mochilas, acessórios e puericultura, abrangendo todas as idades. Nossas marcas, como BabyGo, Dermiwil e Container, conectam adultos e crianças aos seus personagens favoritos, sempre com qualidade e inovação. Paixão e comprometimento definem nosso DNA.",
+  "linkSite": "https://grupodermiwil.com.br/",
+  "tips": [
+    "Mochilas",
+    "Acessórios",
+    "Puericultura",
+    "Garrafas",
+    "Licenças"
+  ],
+  "catalogo": [{
+    "nome": "Catálogo 2024",
+    "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_dermiwil_e_babygo_2024.pdf",
+    "contPag": 168
+  }]
+},
+{
     "nome": "Molin do Brasil",
     "imagens": [
       "/assets/empresa/molin/imagem/Molin01.png",
