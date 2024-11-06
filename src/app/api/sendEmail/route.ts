@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import sendWhatsapp from '../sendWhatsapp/route';
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
@@ -67,6 +68,25 @@ export async function POST(request: Request) {
   };
 
   try {
+    await sendWhatsapp({
+      nome: nome,
+      email: email,
+      telefone: telefone,
+      cnpj: `${cnpj || 'Não fornecido'}`,
+      rua: rua,
+      bairro: bairro,
+      cidade: cidade,
+      estado: estado,
+      cep: CEP,
+      razaosocial: razaoSocial,
+      nomefantasia: nomeFantasia,
+      datafuncao: dataFundacao,
+      status: status,
+      datastatus: dataStatus,
+      atividade: atividadePrincipal,
+      socios: socios,
+      mensagem: `${mensagem || 'Sem mensagem'}`,
+    })
     await transporter.sendMail(mailOptions);
     return NextResponse.json({ message: 'Email enviado com sucesso!' }, { status: 200 });
   } catch (error) {
