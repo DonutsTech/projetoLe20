@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import sendWhatsapp from '../sendWhatsapp/route';
+import enviarMensagem from './sendEmail';
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
@@ -38,23 +38,19 @@ export async function POST(request: Request) {
   const cidade = enderecoCompleto.localidade || 'Não disponível';
   const estado = enderecoCompleto.estado || 'Não disponível';
 
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER,
-    subject: `Novo Formulário do Site: de ${nome}`,
-    text: `
-      Nome: ${nome}
-      Email: ${email}
-      Telefone: ${telefone}
-      CNPJ: ${cnpj || 'Não fornecido'}
-      Endereço Completo:
+  const texto = `
+    Nome: ${nome}
+    Email: ${email}
+    Telefone: ${telefone}
+    CNPJ: ${cnpj || 'Não fornecido'}
+    Endereço Completo:
       - Rua: ${rua}
       - Bairro: ${bairro}
       - Cidade: ${cidade}
       - Estado: ${estado}
       - CEP: ${CEP}
 
-      Dados do CNPJ:
+    Dados do CNPJ:
       - Razão Social: ${razaoSocial}
       - Nome Fantasia: ${nomeFantasia}
       - Data de Fundação: ${dataFundacao}
@@ -63,29 +59,22 @@ export async function POST(request: Request) {
       - Atividade Principal: ${atividadePrincipal}
       - Sócios: ${socios}
 
-      Mensagem: ${mensagem || 'Sem mensagem'}
-    `,
+    Mensagem: ${mensagem || 'Sem mensagem'}
+  `
+
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: process.env.EMAIL_USER,
+    subject: `Novo Formulário do Site: de ${nome}`,
+    text: `${texto}`,
   };
 
   try {
-    await sendWhatsapp({
-      nome: nome,
-      email: email,
-      telefone: telefone,
-      cnpj: `${cnpj || 'Não fornecido'}`,
-      rua: rua,
-      bairro: bairro,
-      cidade: cidade,
-      estado: estado,
-      cep: CEP,
-      razaosocial: razaoSocial,
-      nomefantasia: nomeFantasia,
-      datafuncao: dataFundacao,
-      status: status,
-      datastatus: dataStatus,
-      atividade: atividadePrincipal,
-      socios: socios,
-      mensagem: `${mensagem || 'Sem mensagem'}`,
+    await enviarMensagem({
+      messagem: `
+        Novo Formulário do Site:
+        ${texto}
+      `
     })
     await transporter.sendMail(mailOptions);
     return NextResponse.json({ message: 'Email enviado com sucesso!' }, { status: 200 });
