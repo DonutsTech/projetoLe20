@@ -74,6 +74,7 @@ export async function POST(request: Request) {
       messagem: `
         Novo Formulário do Site:
         ${texto}
+        OBS: Por favor confirme recebimento desta mensagem!
       `
     })
     await transporter.sendMail(mailOptions);
