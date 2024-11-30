@@ -154,21 +154,21 @@
       "Festas"
     ],
     "catalogo": [{
-      "nome": "Catálogo 2024",
-      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_masquerade_2024.pdf",
-      "contPag": 66
-    },
-    {
-      "nome": "Halloween 2024",
-      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_masquerade_halloween_2024.pdf",
-      "contPag": 48
-    },
-    {
-      "nome": "Juninas 2024",
-      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_masquerade_junina_2024.pdf",
-      "contPag": 23
-    }
-  ]
+        "nome": "Catálogo 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_masquerade_2024.pdf",
+        "contPag": 66
+      },
+      {
+        "nome": "Halloween 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_masquerade_halloween_2024.pdf",
+        "contPag": 48
+      },
+      {
+        "nome": "Juninas 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_masquerade_junina_2024.pdf",
+        "contPag": 23
+      }
+    ]
   },
   {
     "nome": "Molin do Brasil",
@@ -290,5 +290,35 @@
       "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_sidnyl_2024.pdf",
       "contPag": 72
     }]
+  },
+  {
+    "nome": "Toyster",
+    "imagens": [
+      "/assets/empresa/toyster/imagem/toyster01.png",
+      "/assets/empresa/toyster/imagem/toyster02.png",
+      "/assets/empresa/toyster/imagem/toyster03.png",
+      "/assets/empresa/toyster/imagem/toyster04.png",
+      "/assets/empresa/toyster/imagem/toyster05.png"
+    ],
+    "descricao": "Fundada em 1987, a Toyster Brinquedos se destaca pela ética e excelência, buscando constantemente aprimorar seus processos para oferecer brinquedos de qualidade,     atender revendedores com eficácia e garantir a satisfação dos clientes.",
+    "linkSite": "https://www.toyster.com.br/",
+    "tips": [
+      "Papelarias",
+      "Brinquedos",
+      "Pedagógicos",
+      "Puericultura",
+      "Licenças"
+    ],
+    "catalogo": [{
+      "nome": "Catálogo 2024",
+      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_toyster_2024.pdf",
+      "contPag": 174
+    },
+    {
+      "nome": "Folder dia das Crianças 2024",
+      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/folheto_toyster_sdc_2024.pdf",
+      "contPag": 16
+    }
+  ]
   }
 ]
