@@ -1,4 +1,5 @@
-[{
+[
+  {
     "nome": "Bicho Esperto",
     "imagens": [
       "/assets/empresa/bichoEsperto/imagem/Bicho01.png",
@@ -21,7 +22,6 @@
       "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_bichoEsperto_2024.pdf",
       "contPag": 98
     }]
-
   },
   {
     "nome": "Carlu Brinquedos",
@@ -191,7 +191,6 @@
       "nome": "Catálogo 2024",
       "catalogo": "https://le20catalogos.s3.amazonaws.com/CATALOGO_MOLIN_2024_OK.pdf",
       "contPag": 266
-
     }]
   },
   {
@@ -310,15 +309,47 @@
       "Licenças"
     ],
     "catalogo": [{
-      "nome": "Catálogo 2024",
-      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_toyster_2024.pdf",
-      "contPag": 174
-    },
-    {
-      "nome": "Folder dia das Crianças 2024",
-      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/folheto_toyster_sdc_2024.pdf",
-      "contPag": 16
-    }
-  ]
+        "nome": "Catálogo 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_toyster_2024.pdf",
+        "contPag": 174
+      },
+      {
+        "nome": "Folder dia das Crianças 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/folheto_toyster_sdc_2024.pdf",
+        "contPag": 16
+      }
+    ]
+  },
+  {
+    "nome": "Uatt?",
+    "imagens": [
+      "/assets/empresa/uatt/imagem/uatt01.png",
+      "/assets/empresa/uatt/imagem/uatt02.png",
+      "/assets/empresa/uatt/imagem/uatt03.png",
+      "/assets/empresa/uatt/imagem/uatt04.png",
+      "/assets/empresa/uatt/imagem/uatt05.png"
+    ],
+    "descricao": "A Uatt é feita de pessoas que colocam o coração em tudo o que fazem. Aqui, o copo está sempre meio cheio: cada desafio é uma oportunidade. Com criatividade e trabalho em equipe, transformamos limões em limonadas irresistíveis, espalhando coisas boas e fazendo corações transbordarem de sentimentos incríveis.",
+    "linkSite": "https://www.uatt.com.br/",
+    "tips": [
+      "Papelaria Fofa",
+      "Presentes"
+    ],
+    "catalogo": [{
+        "nome": "Catálogo 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_uatt_geral_2024.pdf",
+        "contPag": 53
+      },
+      {
+        "nome": "Ideias ! Ideias 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_uatt_ideia_2024.pdf",
+        "contPag": 36
+      },
+      {
+        "nome": "Lançamentos",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_uatt_lancamentos_2024.pdf",
+        "contPag": 5
+      }
+    ]
   }
 ]
