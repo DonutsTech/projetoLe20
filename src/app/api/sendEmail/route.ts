@@ -25,13 +25,13 @@ export async function POST(request: Request) {
   const { nome, email, telefone, CEP, mensagem, enderecoCompleto, cnpj, cnpjData } = data;
 
 
-  const razaoSocial = cnpjData.razao_social;
-  const nomeFantasia = cnpjData.nome_fantasia;
-  const dataFundacao = formatDate(cnpjData.data_fundacao);
-  const status = cnpjData.status;
-  const dataStatus = formatDate(cnpjData.statusDate);
-  const atividadePrincipal = cnpjData.atividade_principal;
-  const socios = cnpjData.socios;
+  const razaoSocial = cnpjData.razao_social || '';
+  const nomeFantasia = cnpjData.nome_fantasia || '';
+  const dataFundacao = formatDate(cnpjData.data_fundacao) || '';
+  const status = cnpjData.status || '';
+  const dataStatus = formatDate(cnpjData.statusDate) || '';
+  const atividadePrincipal = cnpjData.atividade_principal || '';
+  const socios = cnpjData.socios || '';
 
   const rua = enderecoCompleto.rua || 'Não disponível';
   const bairro = enderecoCompleto.bairro || 'Não disponível';

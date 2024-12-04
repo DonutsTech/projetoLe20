@@ -13,7 +13,7 @@ const schema = z.object({
   CEP: z.string().regex(/^\d{5}-\d{3}$/, 'CEP inválido'),
   cnpj: z.string()
     .optional()
-    .refine((val) => val === undefined || /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/.test(val), 'CNPJ inválido'),
+    .refine((val) => val !== undefined && !(/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/.test(val)), 'CNPJ inválido'),
   mensagem: z.string().optional(),
 });
 
@@ -130,13 +130,14 @@ const Formulario = () => {
   const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
 
+    
     switch (name) {
       case 'nome':
         setNome(value);
         break;
       case 'email':
-        setEmail(value);
-        break;
+          setEmail(value);
+          break;
       case 'telefone':
         setTelefone(formatTelefone(value));
         break;
@@ -225,7 +226,7 @@ const Formulario = () => {
   };
 
   return (
-    <form className={Style.formulario} onSubmit={handleSubmit(onSubmit)}>
+    <form className={Style.formulario} onSubmit={handleSubmit(onSubmit)} autoComplete="off">
       <div className={Style.item}>
         <label htmlFor="nome">Nome*</label>
         <input
@@ -233,8 +234,10 @@ const Formulario = () => {
           type="text"
           placeholder="Nome"
           {...register('nome')}
+          name='nome'
           value={nome}
           onChange={handleInputChange}
+          autoComplete="new-password"
         />
         {errors.nome?.message && <span className={Style.error}>{String(errors.nome.message)}</span>}
       </div>
@@ -245,6 +248,7 @@ const Formulario = () => {
           type="email"
           placeholder="Email"
           {...register('email')}
+          name='email'
           value={email}
           onChange={handleInputChange}
         />
@@ -257,8 +261,10 @@ const Formulario = () => {
           type="text"
           placeholder="Somente os números com o ddd"
           {...register('telefone')}
+          name='telefone'
           value={telefone}
           onChange={handleInputChange}
+          autoComplete="new-password"
         />
         {errors.telefone?.message && <span className={Style.error}>{String(errors.telefone.message)}</span>}
       </div>
@@ -270,7 +276,9 @@ const Formulario = () => {
           placeholder="CEP- Somente os números"
           {...register('CEP')}
           value={CEP}
+          name='CEP'
           onChange={handleInputChange}
+          autoComplete="new-password"
         />
         {errors.CEP?.message && <span className={Style.error}>{String(errors.CEP.message)}</span>}
       </div>
@@ -282,7 +290,9 @@ const Formulario = () => {
           placeholder="CNPJ- Somente os números"
           {...register('cnpj')}
           value={cnpj}
+          name='cnpj'
           onChange={handleInputChange}
+          autoComplete="off"
         />
         {errors.cnpj?.message && <span className={Style.error}>{String(errors.cnpj.message)}</span>}
       </div>
@@ -292,8 +302,10 @@ const Formulario = () => {
           id="mensagem"
           placeholder="Mensagem"
           {...register('mensagem')}
+          name='mensagem'
           value={mensagem}
           onChange={handleInputChange}
+          autoComplete="off"
         />
       </div>
       <span className={Style.message}>* campos obrigatórios</span>
