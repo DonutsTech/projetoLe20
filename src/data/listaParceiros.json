@@ -1,133 +1,176 @@
-[{
-  "nome": "Bicho Esperto",
-  "imagens": [
-    "/assets/empresa/bichoEsperto/imagem/Bicho01.png",
-    "/assets/empresa/bichoEsperto/imagem/Bicho02.png",
-    "/assets/empresa/bichoEsperto/imagem/Bicho03.png",
-    "/assets/empresa/bichoEsperto/imagem/Bicho04.png",
-    "/assets/empresa/bichoEsperto/imagem/Bicho05.png"
-  ],
-  "descricao": "Há mais de 50 anos, a Editora Rideel se destaca por excelência em publicações, principalmente em Direito. Com atualizações contínuas e inovação, oferece conteúdos que superam expectativas, atendendo a estudantes e profissionais. Seu catálogo também abrange segmentos infantojuvenis e licenciados.",
-  "linkSite": "https://www.bichoesperto.com.br/",
-  "tips": [
-    "Livros",
-    "Literatura",
-    "Pedagógico",
-    "Licenças",
-    "Biblicos",
-    "Presentes",
-    "puericultura"
-  ],
-  "catalogo": [{
-    "nome": "Catálogo 2024",
-    "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_bichoEsperto_2024.pdf",
-    "contPag": 98
-  }]
-  
-},
-{
-  "nome": "Carlu Brinquedos",
-  "imagens": [
-    "/assets/empresa/carlu/imagem/Carlu01.png",
-    "/assets/empresa/carlu/imagem/Carlu02.png",
-    "/assets/empresa/carlu/imagem/Carlu03.png",
-    "/assets/empresa/carlu/imagem/Carlu04.png",
-    "/assets/empresa/carlu/imagem/Carlu05.png"
-  ],
-  "descricao": "Nós fabricamos brinquedos que educam. A Carlu Brinquedos nasceu do sonho de uma professora em 1996. Inicialmente em um espaço de 10 m² com 3 funcionários, cresceu com apoio da Prefeitura de Toledo. Atualmente, com 155 colaboradores e sede de 7.500 m², atende todo o Brasil. A Carlu continua expandindo, gerando empregos e oportunidades em Toledo.",
-  "linkSite": "https://www.carlu.com.br/brinquedos/",
-  "tips": [
-    "Brinquedos",
-    "Pedagógico",
-    "Quebra cabeças",
-    "Presentes",
-    "Educativo",
-    "Madeira"
-  ],
-  "catalogo": [{
-    "nome": "Catálogo 2024",
-    "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_carlu_2024.pdf",
-    "contPag": 157
-  }]
-},
-{
-  "nome": "Cks",
-  "imagens": [
-    "/assets/empresa/cks/imagem/Cks01.png",
-    "/assets/empresa/cks/imagem/Cks02.png",
-    "/assets/empresa/cks/imagem/Cks03.png",
-    "/assets/empresa/cks/imagem/Cks04.png",
-    "/assets/empresa/cks/imagem/Cks05.png"
-  ],
-  "descricao": "Com mais de 25 anos de experiência, a CKS Brinquedos lidera em vendas de brinquedos e artigos esportivos no Brasil. Parcerias com marcas renomadas resultam em produtos icônicos. Oferecemos diversão e qualidade a todas as idades.",
-  "linkSite": "https://cksbrinquedos.com.br/",
-  "tips": [
-    "Brinquedos",
-    "Licenças",
-    "Presentes",
-    "Carrinhos",
-    "Primeira Idade"
-  ],
-  "catalogo": [{
-    "nome": "Catálogo 2024",
-    "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_cks_2024.pdf",
-    "contPag": 149
-  }]
-},
-{
-  "nome": "Dallec",
-  "imagens": [
-    "/assets/empresa/dallec/imagem/Dallec01.png",
-    "/assets/empresa/dallec/imagem/Dallec02.png",
-    "/assets/empresa/dallec/imagem/Dallec03.png",
-    "/assets/empresa/dallec/imagem/Dallec04.png",
-    "/assets/empresa/dallec/imagem/Dallec05.png"
-  ],
-  "descricao": "Celebrando 55 anos, a Dallec oferece o melhor em produtos gráficos com qualidade e bom gosto. Nossa linha inclui caixas decorativas, cartões refinados, papéis de presente exclusivos e uma vasta linha escolar. Garantimos novidades e produtos diferenciados para você.",
-  "linkSite": "https://dallec.com.br/",
-  "tips": [ 
-    "Presentes",
-    "Papelaria",
-    "Festas",
-    "Embalagens",
-    "Cartões"
-  ],
-  "catalogo": [{
-    "nome": "Catálogo 2024",
-    "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_dallec_2024.pdf",
-    "contPag": 68
+[
+  {
+    "nome": "Bicho Esperto",
+    "imagens": [
+      "/assets/empresa/bichoEsperto/imagem/Bicho01.png",
+      "/assets/empresa/bichoEsperto/imagem/Bicho02.png",
+      "/assets/empresa/bichoEsperto/imagem/Bicho03.png",
+      "/assets/empresa/bichoEsperto/imagem/Bicho04.png",
+      "/assets/empresa/bichoEsperto/imagem/Bicho05.png"
+    ],
+    "descricao": "Há mais de 50 anos, a Editora Rideel se destaca por excelência em publicações, principalmente em Direito. Com atualizações contínuas e inovação, oferece conteúdos que superam expectativas, atendendo a estudantes e profissionais. Seu catálogo também abrange segmentos infantojuvenis e licenciados.",
+    "linkSite": "https://www.bichoesperto.com.br/",
+    "tips": [
+      "Papelarias",
+      "Brinquedos",
+      "Pedagógicos",
+      "Presentes",
+      "Licenças"
+    ],
+    "catalogo": [{
+      "nome": "Catálogo 2024",
+      "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_bichoEsperto_2024.pdf",
+      "contPag": 98
+    }]
   },
-{
-  "nome": "Catálogo Natal 2024",
-  "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_dallec_natal_2024.pdf",
-  "contPag": 30
-}]
-},
-{
-  "nome": "Grupo Dermiwil",
-  "imagens": [
-    "/assets/empresa/dermiwil/imagem/Dermiwil01.png",
-    "/assets/empresa/dermiwil/imagem/Dermiwil02.png",
-    "/assets/empresa/dermiwil/imagem/Dermiwil03.png",
-    "/assets/empresa/dermiwil/imagem/Dermiwil04.png",
-    "/assets/empresa/dermiwil/imagem/Dermiwil05.png"
-  ],
-  "descricao": "Há mais de 60 anos no mercado, atuamos com mochilas, acessórios e puericultura, abrangendo todas as idades. Nossas marcas, como BabyGo, Dermiwil e Container, conectam adultos e crianças aos seus personagens favoritos, sempre com qualidade e inovação. Paixão e comprometimento definem nosso DNA.",
-  "linkSite": "https://grupodermiwil.com.br/",
-  "tips": [
-    "Mochilas",
-    "Acessórios",
-    "Puericultura",
-    "Garrafas",
-    "Licenças"
-  ],
-  "catalogo": [{
-    "nome": "Catálogo 2024",
-    "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_dermiwil_e_babygo_2024.pdf",
-    "contPag": 168
-  }]
-},
-{
+  {
+    "nome": "Carlu Brinquedos",
+    "imagens": [
+      "/assets/empresa/carlu/imagem/Carlu01.png",
+      "/assets/empresa/carlu/imagem/Carlu02.png",
+      "/assets/empresa/carlu/imagem/Carlu03.png",
+      "/assets/empresa/carlu/imagem/Carlu04.png",
+      "/assets/empresa/carlu/imagem/Carlu05.png"
+    ],
+    "descricao": "Nós fabricamos brinquedos que educam. A Carlu Brinquedos nasceu do sonho de uma professora em 1996. Inicialmente em um espaço de 10 m² com 3 funcionários, cresceu com apoio da Prefeitura de Toledo. Atualmente, com 155 colaboradores e sede de 7.500 m², atende todo o Brasil. A Carlu continua expandindo, gerando empregos e oportunidades em Toledo.",
+    "linkSite": "https://www.carlu.com.br/brinquedos/",
+    "tips": [
+      "Papelarias",
+      "Brinquedos",
+      "Pedagógicos"
+    ],
+    "catalogo": [{
+      "nome": "Catálogo 2024",
+      "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_carlu_2024.pdf",
+      "contPag": 157
+    }]
+  },
+  {
+    "nome": "Cks",
+    "imagens": [
+      "/assets/empresa/cks/imagem/Cks01.png",
+      "/assets/empresa/cks/imagem/Cks02.png",
+      "/assets/empresa/cks/imagem/Cks03.png",
+      "/assets/empresa/cks/imagem/Cks04.png",
+      "/assets/empresa/cks/imagem/Cks05.png"
+    ],
+    "descricao": "Com mais de 25 anos de experiência, a CKS Brinquedos lidera em vendas de brinquedos e artigos esportivos no Brasil. Parcerias com marcas renomadas resultam em produtos icônicos. Oferecemos diversão e qualidade a todas as idades.",
+    "linkSite": "https://cksbrinquedos.com.br/",
+    "tips": [
+      "Brinquedos",
+      "Presentes",
+      "Licenças"
+    ],
+    "catalogo": [{
+      "nome": "Catálogo 2024",
+      "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_cks_2024.pdf",
+      "contPag": 149
+    }]
+  },
+  {
+    "nome": "Dallec",
+    "imagens": [
+      "/assets/empresa/dallec/imagem/Dallec01.png",
+      "/assets/empresa/dallec/imagem/Dallec02.png",
+      "/assets/empresa/dallec/imagem/Dallec03.png",
+      "/assets/empresa/dallec/imagem/Dallec04.png",
+      "/assets/empresa/dallec/imagem/Dallec05.png"
+    ],
+    "descricao": "Celebrando 55 anos, a Dallec oferece o melhor em produtos gráficos com qualidade e bom gosto. Nossa linha inclui caixas decorativas, cartões refinados, papéis de presente exclusivos e uma vasta linha escolar. Garantimos novidades e produtos diferenciados para você.",
+    "linkSite": "https://dallec.com.br/",
+    "tips": [
+      "Papelaria",
+      "Papelaria Fofa",
+      "Festas",
+      "Presentes"
+    ],
+    "catalogo": [{
+        "nome": "Catálogo 2024",
+        "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_dallec_2024.pdf",
+        "contPag": 68
+      },
+      {
+        "nome": "Catálogo Natal 2024",
+        "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_dallec_natal_2024.pdf",
+        "contPag": 30
+      }
+    ]
+  },
+  {
+    "nome": "Grupo Dermiwil",
+    "imagens": [
+      "/assets/empresa/dermiwil/imagem/Dermiwil01.png",
+      "/assets/empresa/dermiwil/imagem/Dermiwil02.png",
+      "/assets/empresa/dermiwil/imagem/Dermiwil03.png",
+      "/assets/empresa/dermiwil/imagem/Dermiwil04.png",
+      "/assets/empresa/dermiwil/imagem/Dermiwil05.png"
+    ],
+    "descricao": "Há mais de 60 anos no mercado, atuamos com mochilas, acessórios e puericultura, abrangendo todas as idades. Nossas marcas, como BabyGo, Dermiwil e Container, conectam adultos e crianças aos seus personagens favoritos, sempre com qualidade e inovação. Paixão e comprometimento definem nosso DNA.",
+    "linkSite": "https://grupodermiwil.com.br/",
+    "tips": [
+      "Papelarias",
+      "Puericulturas",
+      "Licenças"
+    ],
+    "catalogo": [{
+      "nome": "Catálogo 2024",
+      "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_dermiwil_e_babygo_2024.pdf",
+      "contPag": 168
+    }]
+  },
+  {
+    "nome": "GPK Brasil",
+    "imagens": [
+      "/assets/empresa/gpk/imagem/gpk01.png",
+      "/assets/empresa/gpk/imagem/gpk02.png",
+      "/assets/empresa/gpk/imagem/gpk03.png",
+      "/assets/empresa/gpk/imagem/gpk04.png",
+      "/assets/empresa/gpk/imagem/gpk05.png"
+    ],
+    "descricao": "A GPK Brasil é referência em materiais escolares, de escritório, organização e editorial, com mais de 50 anos de tradição. Licenciada das marcas Romitec e Plast Park, também cria produtos exclusivos para grandes clientes e fornece embalagens plásticas inovadoras para atender a diferentes mercados.",
+    "linkSite": "https://gpkbrasil.com.br/",
+    "tips": [
+      "Papelarias"
+    ],
+    "catalogo": [{
+      "nome": "Catálogo 2024",
+      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_gpk_2024",
+      "contPag": 56
+    }]
+  },
+  {
+    "nome": "Masquerade",
+    "imagens": [
+      "/assets/empresa/masquerade/imagem/masquerade01.png",
+      "/assets/empresa/masquerade/imagem/masquerade02.png",
+      "/assets/empresa/masquerade/imagem/masquerade03.png",
+      "/assets/empresa/masquerade/imagem/masquerade04.png",
+      "/assets/empresa/masquerade/imagem/masquerade05.png"
+    ],
+    "descricao": "Bem-vindo à Masquerade Fantasias! Há mais de duas décadas, criamos fantasias que trazem alegria e transformam eventos temáticos em momentos inesquecíveis. Com excelência e criatividade, oferecemos peças únicas e de alta qualidade para fazer da sua celebração uma experiência especial.",
+    "linkSite": "https://masqueradefantasias.com.br/",
+    "tips": [
+      "Brinquedos",
+      "Festas"
+    ],
+    "catalogo": [{
+        "nome": "Catálogo 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_masquerade_2024.pdf",
+        "contPag": 66
+      },
+      {
+        "nome": "Halloween 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_masquerade_halloween_2024.pdf",
+        "contPag": 48
+      },
+      {
+        "nome": "Juninas 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_masquerade_junina_2024.pdf",
+        "contPag": 23
+      }
+    ]
+  },
+  {
     "nome": "Molin do Brasil",
     "imagens": [
       "/assets/empresa/molin/imagem/Molin01.png",
@@ -139,19 +182,59 @@
     "descricao": "Desde 1948 em Portugal e há 36 anos no Brasil, a Molin foca na excelência e satisfação dos consumidores. Empoderamos todos a escrever suas histórias, inovando e buscando qualidade diariamente.",
     "linkSite": "https://molin.com.br/",
     "tips": [
-      "Papelaria",
-      "Escolar",
-      "Fofa",
-      "Office",
-      "Licenças",
-      "Presente",
-      "Escrita"
+      "Papelarias",
+      "Papelaria Fofa",
+      "Presentes",
+      "Licenças"
     ],
     "catalogo": [{
       "nome": "Catálogo 2024",
       "catalogo": "https://le20catalogos.s3.amazonaws.com/CATALOGO_MOLIN_2024_OK.pdf",
       "contPag": 266
-
+    }]
+  },
+  {
+    "nome": "Planetoys",
+    "imagens": [
+      "/assets/empresa/planetoys/imagem/planetoys01.png",
+      "/assets/empresa/planetoys/imagem/planetoys02.png",
+      "/assets/empresa/planetoys/imagem/planetoys03.png",
+      "/assets/empresa/planetoys/imagem/planetoys04.png",
+      "/assets/empresa/planetoys/imagem/planetoys05.png"
+    ],
+    "descricao": "Em 2019, o empresário mineiro José Calazans buscou tecnologia e matérias-primas no exterior para criar a melhor massinha do Brasil. Assim, nasceu em 2021 a Planeta Brinquedos, com fábrica em Belo Horizonte, MG. Desde o início, a Planetooys, nome fantasia, foca na qualidade e segurança de seus produtos para garantir diversão às crianças.",
+    "linkSite": "https://planetoys.com.br/",
+    "tips": [
+      "Brinquedos",
+      "Presentes"
+    ],
+    "catalogo": [{
+      "nome": "Catálogo 2024",
+      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_planetoys_2024.pdf",
+      "contPag": 8
+    }]
+  },
+  {
+    "nome": "RDJ Brinquedos",
+    "imagens": [
+      "/assets/empresa/rdj/imagem/rdj01.png",
+      "/assets/empresa/rdj/imagem/rdj02.png",
+      "/assets/empresa/rdj/imagem/rdj03.png",
+      "/assets/empresa/rdj/imagem/rdj04.png",
+      "/assets/empresa/rdj/imagem/rdj05.png"
+    ],
+    "descricao": "Fundada em 2000, a RDJ iniciou no mercado com brinquedos e jogos pedagógicos voltados à alfabetização e desenvolvimento infantil. Hoje, oferece produtos para papelaria, escolar, artesanato, brinquedos, festas e esportes. Com sede própria em Registro-SP, ocupa 5.000m² e prioriza inovação e sustentabilidade.",
+    "linkSite": "https://www.rdjbrinquedos.com.br/",
+    "tips": [
+      "Papelarias",
+      "Brinquedos",
+      "Festas",
+      "Pedagógicos"
+    ],
+    "catalogo": [{
+      "nome": "Catálogo 2023",
+      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_rdj_2023.pdf",
+      "contPag": 236
     }]
   },
   {
@@ -167,21 +250,19 @@
     "linkSite": "https://royaltoys.com.br/",
     "tips": [
       "Brinquedos",
-      "Doces",
-      "Check-out",
       "Festas",
-      "Licenças",
-      "Presente"
+      "Presentes",
+      "Licenças"
     ],
     "catalogo": [{
       "nome": "Catálogo-Doces 2024",
       "catalogo": "https://le20catalogos.s3.amazonaws.com/catologo_royal_doce_2024.pdf",
       "contPag": 12
-    },{
+    }, {
       "nome": "Catálogo-Eletrônicos 2024",
       "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_royal_eletronico_2024.pdf",
       "contPag": 6
-    },{
+    }, {
       "nome": "Catálogo-Brinquedos 2024",
       "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_royal_brinquedo_2024.pdf",
       "contPag": 26
@@ -199,7 +280,6 @@
     "descricao": "Há mais de 40 anos no mercado, a Sid-Nyl lidera o setor de brinquedos no Brasil. Nosso lema: todas as crianças merecem brincar. “Todo dia é dia de brincar!” Acreditamos que a alegria do brincar é essencial para o desenvolvimento infantil e trabalhamos para garantir que isso seja possível para todas as crianças.",
     "linkSite": "http://sidnyl.com.br/",
     "tips": [
-      "Bonecas",
       "Brinquedos",
       "Presentes",
       "Licenças"
@@ -209,5 +289,67 @@
       "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_sidnyl_2024.pdf",
       "contPag": 72
     }]
+  },
+  {
+    "nome": "Toyster",
+    "imagens": [
+      "/assets/empresa/toyster/imagem/toyster01.png",
+      "/assets/empresa/toyster/imagem/toyster02.png",
+      "/assets/empresa/toyster/imagem/toyster03.png",
+      "/assets/empresa/toyster/imagem/toyster04.png",
+      "/assets/empresa/toyster/imagem/toyster05.png"
+    ],
+    "descricao": "Fundada em 1987, a Toyster Brinquedos se destaca pela ética e excelência, buscando constantemente aprimorar seus processos para oferecer brinquedos de qualidade,     atender revendedores com eficácia e garantir a satisfação dos clientes.",
+    "linkSite": "https://www.toyster.com.br/",
+    "tips": [
+      "Papelarias",
+      "Brinquedos",
+      "Pedagógicos",
+      "Puericultura",
+      "Licenças"
+    ],
+    "catalogo": [{
+        "nome": "Catálogo 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_toyster_2024.pdf",
+        "contPag": 174
+      },
+      {
+        "nome": "Folder dia das Crianças 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/folheto_toyster_sdc_2024.pdf",
+        "contPag": 16
+      }
+    ]
+  },
+  {
+    "nome": "Uatt?",
+    "imagens": [
+      "/assets/empresa/uatt/imagem/uatt01.png",
+      "/assets/empresa/uatt/imagem/uatt02.png",
+      "/assets/empresa/uatt/imagem/uatt03.png",
+      "/assets/empresa/uatt/imagem/uatt04.png",
+      "/assets/empresa/uatt/imagem/uatt05.png"
+    ],
+    "descricao": "A Uatt é feita de pessoas que colocam o coração em tudo o que fazem. Aqui, o copo está sempre meio cheio: cada desafio é uma oportunidade. Com criatividade e trabalho em equipe, transformamos limões em limonadas irresistíveis, espalhando coisas boas e fazendo corações transbordarem de sentimentos incríveis.",
+    "linkSite": "https://www.uatt.com.br/",
+    "tips": [
+      "Papelaria Fofa",
+      "Presentes"
+    ],
+    "catalogo": [{
+        "nome": "Catálogo 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_uatt_geral_2024.pdf",
+        "contPag": 53
+      },
+      {
+        "nome": "Ideias ! Ideias 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_uatt_ideia_2024.pdf",
+        "contPag": 36
+      },
+      {
+        "nome": "Lançamentos",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_uatt_lancamentos_2024.pdf",
+        "contPag": 5
+      }
+    ]
   }
 ]
