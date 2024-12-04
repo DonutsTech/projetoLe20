@@ -3,7 +3,15 @@
 .tipos { 
   margin: 32px 0 48px 0;
   display: flex;
-  gap: 16px
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  gap: 16px;
+
+  @media (max-width: $mobile) {
+    margin: 8px 0 16px 0;   
+  }
 }
 
 .todos {
