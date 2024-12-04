@@ -10,7 +10,7 @@ interface Props {
 
 const Tipos = ({tipoSelecionado, selecionouTipo}: Props) => {
   return (
-    <>
+    <div className={Style.tipos}>
       {
         tipos.map((nome, index) => (
           <button className={classNames({
@@ -22,8 +22,8 @@ const Tipos = ({tipoSelecionado, selecionouTipo}: Props) => {
           </button>
         ))
       }
-      <button type='button' onClick={() => selecionouTipo(null)}>Todos</button>
-    </>
+      <button className={Style.resetBtn} type='button' onClick={() => selecionouTipo(null)}>Todos</button>
+    </div>
   )
 }
 
