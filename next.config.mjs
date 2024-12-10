@@ -16,6 +16,11 @@ const nextConfig = {
   webpack(config) {
     return config;
   },
+  api: {
+    bodyParser: {
+      sizeLimit: '50mb',
+    },
+  },
 };
 
 export default withVideos(nextConfig, {
