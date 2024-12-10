@@ -154,9 +154,9 @@
       "Festas"
     ],
     "catalogo": [{
-        "nome": "Catálogo 2024",
-        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_masquerade_2024.pdf",
-        "contPag": 66
+        "nome": "Catálogo 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_masquerade_2025.pdf",
+        "contPag": 62
       },
       {
         "nome": "Halloween 2024",
