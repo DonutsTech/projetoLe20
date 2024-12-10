@@ -1,6 +1,6 @@
-@import 'variaveis';
+@use 'variaveis' as *;
 
-.blobContainer { 
+.blobContainer {
   width: 320px;
   height: auto;
   display: flex;

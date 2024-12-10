@@ -1,5 +1,6 @@
-@import 'variaveis';
-.container { 
+@use 'variaveis' as *;
+
+.container {
   width: 90%;
   margin: 0 auto;
   height: 100%;

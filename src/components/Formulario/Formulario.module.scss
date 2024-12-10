@@ -1,13 +1,13 @@
-@import 'variaveis';
+@use 'variaveis' as *;
 
-.formulario { 
+.formulario {
   width: clamp(17.5rem, 15rem + 12.5vw, 30rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
 
-  .item { 
+  .item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -29,14 +29,14 @@
       box-shadow: -5px 5px 0 0 $cor-2-1;
       transition: all 100ms ease-in-out;
 
-      &:focus { 
+      &:focus {
         outline: none;
         box-shadow: -3px 3px 0 0 $cor-1-1;
         border: 3px solid $cor-1-1;
       }
     }
 
-    
+
 
     textarea {
       height: 128px;
@@ -64,8 +64,8 @@
     cursor: pointer;
     box-shadow: -5px 5px 10px 0 $cor-1-overlay;
     align-self: flex-start;
-    
-    &:hover { 
+
+    &:hover {
       background-color: $cor-1-1;
       // color: $cor-2-1;
       box-shadow: none;

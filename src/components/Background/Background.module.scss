@@ -1,4 +1,4 @@
-@import 'variaveis';
+@use 'variaveis' as *;
 
 .overlay {
   width: 100vw;
@@ -12,7 +12,7 @@
   z-index: -1;
 }
 
-.video { 
+.video {
   width: 100vw;
   height: 100vh;
   position: fixed;

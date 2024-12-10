@@ -1,4 +1,4 @@
-@import 'variaveis';
+@use 'variaveis' as *;
 
 .container {
   .card {
@@ -288,8 +288,8 @@
                   background-color: $cor-4-1;
                   border-radius: 16px;
                   z-index: 3;
-      
-                  &:hover { 
+
+                  &:hover {
                     cursor: pointer;
                     scale: 1.1;
                     transition: all 200ms ease-in-out;
@@ -346,7 +346,7 @@
 
   }
 
-  .modalCatalog { 
+  .modalCatalog {
     width: 95vw;
     height: 95vh;
     min-width: 300px;
@@ -390,7 +390,7 @@
       }
     }
 
-    .btnBox { 
+    .btnBox {
       width: 125px;
       height: auto;
       display: flex;
@@ -415,7 +415,7 @@
           background-color: $cor-4-1;
         }
 
-        img { 
+        img {
           width: 60%;
           height: auto;
           object-fit: cover;

@@ -1,6 +1,6 @@
-@import 'variaveis';
+@use 'variaveis' as *;
 
-.contato { 
+.contato {
   width: 100%;
   height: auto;
   min-height: 50vh;
