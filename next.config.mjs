@@ -12,14 +12,14 @@ const nextConfig = {
     domains: ['localhost'],
     unoptimized: true,
   },
+  api: {
+    bodyParser: {
+      sizeLimit: '100mb', // Ajuste conforme necessário (ex: '5mb', '50mb')
+    },
+  },
   // output: 'export',
   webpack(config) {
     return config;
-  },
-  experimental: {
-    serverActions: {
-      bodySizeLimit: '50mb',
-    },
   },
 };
 

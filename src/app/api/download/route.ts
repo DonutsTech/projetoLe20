@@ -12,16 +12,12 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'URL inválida' }, { status: 400 });
         }
 
-
         // Fazendo a requisição para o S3 usando a URL fornecida
         const response = await axios.get(url, {
             responseType: 'arraybuffer',
             headers: {
                 'Content-Type': 'application/pdf',
             },
-            maxContentLength: 50 * 1024 * 1024, // Limite para o conteúdo (50MB)
-            maxBodyLength: 50 * 1024 * 1024, // Limite para o corpo da requisição (50MB)
-            timeout: 60000, // Timeout de 60 segundos
         });
 
         console.log('Resposta recebida do S3:', response.status); // Adicionando log
