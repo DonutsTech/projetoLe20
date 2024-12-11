@@ -1,6 +1,14 @@
 import { NextResponse } from 'next/server';
 import axios, { AxiosError } from 'axios';
 
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '500mb', // Aumente conforme necessário (ex: '10mb', '100mb')
+    },
+  },
+};
+
 export async function POST(request: Request) {
     try {
         // Parseando o corpo da requisição

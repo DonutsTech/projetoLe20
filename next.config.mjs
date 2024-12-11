@@ -14,7 +14,7 @@ const nextConfig = {
   },
   api: {
     bodyParser: {
-      sizeLimit: '100mb', // Ajuste conforme necessário (ex: '5mb', '50mb')
+      sizeLimit: '500mb', // Ajuste conforme necessário (ex: '5mb', '50mb')
     },
   },
   // output: 'export',
