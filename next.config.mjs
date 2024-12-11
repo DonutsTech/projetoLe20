@@ -16,9 +16,9 @@ const nextConfig = {
   webpack(config) {
     return config;
   },
-  api: {
-    bodyParser: {
-      sizeLimit: '60mb',
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '2mb',
     },
   },
 };
