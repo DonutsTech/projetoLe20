@@ -13,14 +13,3 @@ frontend:
       - '**/*'
   cache:
     paths: []  # Desabilita o cache de build para evitar sobrecarga de espaço
-proxy:
-  - /api/download:
-      target: https://www.le20rep.com/api/download
-      secure: true
-      proxyTimeout: 60000
-      maxBodySize: 50mb
-  - /api/email:
-      target: https://www.le20rep.com/api/sendEmail
-      secure: true
-      proxyTimeout: 60000
-      maxBodySize: 50mb
