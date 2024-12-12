@@ -33,6 +33,8 @@ export async function POST(request: Request) {
         // Convertendo o arquivo PDF em base64
         const base64 = Buffer.from(response.data).toString('base64');
 
+        console.log(base64)
+
         // Definindo os headers de CORS
         const responseHeaders = new Headers();
         responseHeaders.set('Access-Control-Allow-Origin', '*');
