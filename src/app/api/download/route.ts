@@ -25,12 +25,7 @@ export async function POST(request: Request) {
             },
         });
 
-        const chunks: string[] = [];
-
-        response.data.on('data', (chunk: Buffer) => {
-          const base64Chunk = chunk.toString('base64');
-          chunks.push(base64Chunk);
-        });
+        console.log('Status da resposta do S3:', response.status);
 
         // Definindo os headers de CORS
         const responseHeaders = new Headers();
@@ -39,18 +34,28 @@ export async function POST(request: Request) {
         responseHeaders.set('Access-Control-Allow-Headers', 'Content-Type');
         responseHeaders.set('Content-Type', 'application/json');
 
-        // Respondendo com o conteúdo base64
 
-        response.data.on('end', () => {
-          const base64File = chunks.join(''); // Junta os chunks em uma única string
-          return NextResponse.json({ fileContent: base64File }, { headers: responseHeaders });
+        const chunks: string[] = [];
+
+        // Espera o stream terminar
+        await new Promise<void>((resolve, reject) => {
+          response.data.on('data', (chunk: Buffer) => {
+            const base64Chunk = chunk.toString('base64');
+            chunks.push(base64Chunk);
+          });
+
+          response.data.on('end', () => {
+            resolve(); // A stream terminou
+          });
+
+          response.data.on('error', (error: Error) => {
+            reject(error); // Erro no stream
+          });
         });
 
-        // Caso haja erro no stream
-        response.data.on('error', (error: Error) => {
-          console.error('Erro ao processar o stream:', error.message);
-          return NextResponse.json({ error: 'Erro ao processar o stream' });
-        });
+        const base64File = chunks.join('');
+
+        return NextResponse.json({ fileContent: base64File }, { headers: responseHeaders });
 
     } catch (error: unknown) {
         if (error instanceof AxiosError) {
