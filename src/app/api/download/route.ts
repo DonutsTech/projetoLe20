@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 
 export const config = {
   api: {
-    responseLimit: false,
+    bodyParser: false, // Desativa o parser automático
   },
 };
 
