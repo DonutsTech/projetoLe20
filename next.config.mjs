@@ -17,6 +17,9 @@ const nextConfig = {
       sizeLimit: '500mb', // Ajuste conforme necessário (ex: '5mb', '50mb')
     },
   },
+  serverActions: {
+    bodySizeLimit: '500mb' // Set desired value here
+  },
   // output: 'export',
   webpack(config) {
     return config;
