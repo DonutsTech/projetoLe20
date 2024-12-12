@@ -33,6 +33,8 @@ export async function POST(request: Request) {
           chunks.push(base64Chunk);
         });
 
+        console.log(chunks)
+
         // Definindo os headers de CORS
         const responseHeaders = new Headers();
         responseHeaders.set('Access-Control-Allow-Origin', '*');
