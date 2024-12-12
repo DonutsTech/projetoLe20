@@ -16,6 +16,17 @@ const nextConfig = {
   webpack(config) {
     return config;
   },
+  async headers() {
+    return [
+      {
+        source: '/api/(.*)',
+        headers: [
+          { key: 'Content-Type', value: 'application/json' },
+          { key: 'Content-Length', value: '849346560' }, // 10MB
+        ],
+      },
+    ];
+  },
 };
 
 export default withVideos(nextConfig, {

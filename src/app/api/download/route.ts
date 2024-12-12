@@ -4,10 +4,11 @@ import axios, { AxiosError } from 'axios';
 export const config = {
   api: {
     bodyParser: {
-      sizeLimit: '500mb', // Aumente conforme necessário (ex: '10mb', '100mb')
+      sizeLimit: '810mb', // Define o limite de tamanho
     },
   },
 };
+
 
 export async function POST(request: Request) {
     try {
