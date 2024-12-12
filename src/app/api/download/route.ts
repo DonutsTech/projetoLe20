@@ -11,7 +11,6 @@ export async function POST(request: Request) {
     try {
         // Parseando o corpo da requisição
         const { url } = await request.json();
-        console.log('URL recebida:', url); // Adicionando log
 
         // Verificando se a URL é válida
         if (!url || !/^https?:\/\//.test(url)) {
@@ -33,8 +32,6 @@ export async function POST(request: Request) {
           chunks.push(base64Chunk);
         });
 
-        console.log(chunks)
-
         // Definindo os headers de CORS
         const responseHeaders = new Headers();
         responseHeaders.set('Access-Control-Allow-Origin', '*');
@@ -46,10 +43,7 @@ export async function POST(request: Request) {
 
         response.data.on('end', () => {
           const base64File = chunks.join(''); // Junta os chunks em uma única string
-          return new NextResponse(
-            JSON.stringify({ fileContent: base64File }),
-            { status: 200, headers: responseHeaders }
-          );
+          return NextResponse.json({ fileContent: base64File }, { headers: responseHeaders });
         });
 
         // Caso haja erro no stream
