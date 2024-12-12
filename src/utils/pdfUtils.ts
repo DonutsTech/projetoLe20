@@ -3,7 +3,7 @@ import * as pdfjsLib from 'pdfjs-dist';
 import { PDFDocumentProxy } from 'pdfjs-dist/types/src/display/api';
 
 if (typeof window !== 'undefined') {
-  pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.9.124/legacy/build/pdf.worker.mjs";
+  pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.9.155/legacy/build/pdf.worker.mjs";
 }
 
 interface PdfImageLoader {
@@ -24,7 +24,7 @@ export async function convertPdfPageToImage(pdfBase64: string): Promise<PdfImage
   const getPageImage = async (pageNum: number): Promise<string> => {
     const page = await pdf.getPage(pageNum);
     const viewport = page.getViewport({ scale: 1.5 });
-    
+
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
 
