@@ -20,18 +20,18 @@ export async function POST(request: Request) {
 
         // Fazendo a requisição para o S3 usando a URL fornecida
         const response = await axios.get(url, {
-            responseType: 'arraybuffer',
+            responseType: 'stream',
             headers: {
                 'Content-Type': 'application/pdf',
             },
         });
 
-        console.log('Resposta recebida do S3:', response.status); // Adicionando log
+        const chunks: string[] = [];
 
-        // Convertendo o arquivo PDF em base64
-        const base64 = Buffer.from(response.data).toString('base64');
-
-        console.log(base64)
+        response.data.on('data', (chunk: Buffer) => {
+          const base64Chunk = chunk.toString('base64');
+          chunks.push(base64Chunk);
+        });
 
         // Definindo os headers de CORS
         const responseHeaders = new Headers();
@@ -41,7 +41,20 @@ export async function POST(request: Request) {
         responseHeaders.set('Content-Type', 'application/json');
 
         // Respondendo com o conteúdo base64
-        return NextResponse.json({ fileContent: base64 }, { headers: responseHeaders });
+
+        response.data.on('end', () => {
+          const base64File = chunks.join(''); // Junta os chunks em uma única string
+          return new NextResponse(
+            JSON.stringify({ fileContent: base64File }),
+            { status: 200, headers: responseHeaders }
+          );
+        });
+
+        // Caso haja erro no stream
+        response.data.on('error', (error: Error) => {
+          console.error('Erro ao processar o stream:', error.message);
+          return NextResponse.json({ error: 'Erro ao processar o stream' });
+        });
 
     } catch (error: unknown) {
         if (error instanceof AxiosError) {
