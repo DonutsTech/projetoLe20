@@ -3,7 +3,9 @@ import axios, { AxiosError } from 'axios';
 
 export const config = {
   api: {
-    bodyParser: false, // Desativa o parser automático
+    bodyParser: {
+      sizeLimit: '500mb', // Aumente conforme necessário (ex: '10mb', '100mb')
+    },
   },
 };
 
@@ -11,6 +13,7 @@ export async function POST(request: Request) {
     try {
         // Parseando o corpo da requisição
         const { url } = await request.json();
+        console.log('URL recebida:', url); // Adicionando log
 
         // Verificando se a URL é válida
         if (!url || !/^https?:\/\//.test(url)) {
@@ -19,13 +22,16 @@ export async function POST(request: Request) {
 
         // Fazendo a requisição para o S3 usando a URL fornecida
         const response = await axios.get(url, {
-            responseType: 'stream',
+            responseType: 'arraybuffer',
             headers: {
                 'Content-Type': 'application/pdf',
             },
         });
 
-        console.log('Status da resposta do S3:', response.status);
+        console.log('Resposta recebida do S3:', response.status); // Adicionando log
+
+        // Convertendo o arquivo PDF em base64
+        const base64 = Buffer.from(response.data).toString('base64');
 
         // Definindo os headers de CORS
         const responseHeaders = new Headers();
@@ -34,28 +40,8 @@ export async function POST(request: Request) {
         responseHeaders.set('Access-Control-Allow-Headers', 'Content-Type');
         responseHeaders.set('Content-Type', 'application/json');
 
-
-        const chunks: string[] = [];
-
-        // Espera o stream terminar
-        await new Promise<void>((resolve, reject) => {
-          response.data.on('data', (chunk: Buffer) => {
-            const base64Chunk = chunk.toString('base64');
-            chunks.push(base64Chunk);
-          });
-
-          response.data.on('end', () => {
-            resolve(); // A stream terminou
-          });
-
-          response.data.on('error', (error: Error) => {
-            reject(error); // Erro no stream
-          });
-        });
-
-        const base64File = chunks.join('');
-
-        return NextResponse.json({ fileContent: base64File }, { headers: responseHeaders });
+        // Respondendo com o conteúdo base64
+        return NextResponse.json({ fileContent: base64 }, { headers: responseHeaders });
 
     } catch (error: unknown) {
         if (error instanceof AxiosError) {
