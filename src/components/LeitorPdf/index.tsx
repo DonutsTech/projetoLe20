@@ -30,27 +30,49 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const fetchPdfFromS3 = async (url: string): Promise<string> => {
+    try {
+      const response = await fetch(url);
+
+      // Verifica se a requisição foi bem-sucedida
+      if (!response.ok) {
+        throw new Error(`Erro ao buscar o PDF: ${response.statusText}`);
+      }
+
+      // Obtém os dados como um Blob
+      const blob = await response.blob();
+
+      // Converte o Blob em Base64
+      const base64 = await blobToBase64(blob);
+
+      return base64;
+    } catch (error) {
+      console.error('Erro ao buscar o PDF do S3:', error);
+      throw error;
+    }
+  };
+
+  const blobToBase64 = (blob: Blob): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result as string);
+      reader.onerror = (err) => reject(err);
+      reader.readAsDataURL(blob);
+    });
+  };
+
   useEffect(() => {
     const fetchPdf = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/download', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url: file }),
-        });
 
-        // Verificação de erro na resposta
-        if (!response.ok) {
-          throw new Error(`Erro na requisição: ${response.statusText}`);
-        }
-
-        const data = await response.json();
+        // Baixa o PDF do S3 e converte para Base64
+        const base64 = await fetchPdfFromS3(file);
 
         // Verifica se o conteúdo do PDF foi retornado
-        if (data.fileContent) {
-          setPdfBase64(data.fileContent);
-          const { numPages, getPageImage } = await convertPdfPageToImage(data.fileContent);
+        if (base64 || base64 === 'data:application/pdf;base64,') {
+          setPdfBase64(base64);
+          const { numPages, getPageImage } = await convertPdfPageToImage(base64);
 
           // Verifica se o número de páginas é válido
           if (numPages <= 0) {
