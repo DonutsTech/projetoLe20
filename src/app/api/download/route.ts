@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import axios, { AxiosError } from 'axios';
+import { PassThrough } from 'stream';
 
 export const config = {
   api: {
@@ -33,8 +34,14 @@ export async function POST(request: Request) {
 
         console.log('Resposta recebida do S3:', response.status); // Adicionando log
 
+        const stream = response.data.pipe(new PassThrough());
+        const chunks = [];
+        for await (const chunk of stream) {
+            chunks.push(chunk);
+        }
+
         // Convertendo o arquivo PDF em base64
-        const base64 = Buffer.from(response.data).toString('base64');
+        const base64 = Buffer.concat(chunks).toString('base64');
 
         // Definindo os headers de CORS
         const responseHeaders = new Headers();
