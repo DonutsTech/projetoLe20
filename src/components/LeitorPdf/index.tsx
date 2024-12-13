@@ -34,13 +34,10 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
     const fetchPdf = async () => {
       try {
         setLoading(true);
-        const formData = new FormData();
-        formData.append('file', file);
-
         const response = await fetch('/api/download', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: formData,
+          body: JSON.stringify({ url: file }),
         });
 
         // Verificação de erro na resposta
