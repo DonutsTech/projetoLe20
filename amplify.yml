@@ -6,11 +6,10 @@ frontend:
         - npm install
     build:
       commands:
-        - cp _headers .next/ # Ou `out/`, dependendo do seu framework
         - npm run build
   artifacts:
     baseDirectory: .next
     files:
       - '**/*'
   cache:
-    paths: []
+    paths: []  # Desabilita o cache de build para evitar sobrecarga de espaço
