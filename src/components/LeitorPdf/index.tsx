@@ -34,10 +34,13 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
     const fetchPdf = async () => {
       try {
         setLoading(true);
+        const formData = new FormData();
+        formData.append('file', file);
+
         const response = await fetch('/api/download', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url: file }),
+          body: formData,
         });
 
         // Verificação de erro na resposta
@@ -121,7 +124,7 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
   return (
     <div className={styles.container}>
       <HTMLFlipBook
-        ref={flipBookRef} 
+        ref={flipBookRef}
         width={isSinglePage ? 400 : 550}
         height={isSinglePage ? 533 : 733}
         size="stretch"
@@ -135,7 +138,7 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
         flippingTime={500}
         startPage={0}
         className={styles.book}
-        onFlip={(e) => handlePageFlip(e.data)} 
+        onFlip={(e) => handlePageFlip(e.data)}
       >
         {Array.from({ length: numPages }, (_, index) => (
           <div key={index} className={styles.page}>
