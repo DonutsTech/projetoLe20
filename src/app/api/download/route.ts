@@ -24,6 +24,8 @@ export async function POST(request: Request) {
         // Fazendo a requisição para o S3 usando a URL fornecida
         const response = await axios.get(url, {
             responseType: 'arraybuffer',
+            maxContentLength: Infinity,
+            maxBodyLength: Infinity,
             headers: {
                 'Content-Type': 'application/pdf',
             },
