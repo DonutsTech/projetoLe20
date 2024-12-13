@@ -1,24 +1,16 @@
 version: 1
-applications:
-  - appRoot: .
-    frontend:
-      phases:
-        preBuild:
-          commands:
-            - npm ci
-        build:
-          commands:
-            - npm run build
-      artifacts:
-        baseDirectory: .next
-        files:
-          - '**/*'
-      customHeaders:
-        - pattern: "/api/*"
-          headers:
-            - key: "Content-Length"
-              value: "849346560" # 810MB
-    cache:
-      paths:
-        - node_modules/**/*
-        - .next/cache/**/*
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm install
+    build:
+      commands:
+        - cp _headers .next/ # Ou `out/`, dependendo do seu framework
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths: []
