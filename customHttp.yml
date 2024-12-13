@@ -1,5 +1,0 @@
-customHeaders:
-  - pattern: "/api/*"
-    headers:
-      - key: "Content-Length"
-        value: "849346560"
