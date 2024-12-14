@@ -68,7 +68,10 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
         setLoading(true);
         const nome = file.substring(file.lastIndexOf('/') + 1)
 
+        console.log(nome)
+
         const command = new GetObjectCommand({ Bucket: 'le20catalogos', Key: nome });
+
         const response = await s3.send(command);
 
         if (!response.Body) {
@@ -78,6 +81,8 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
         const arrayBuffer = await streamToArrayBuffer(response.Body as ReadableStream);
 
         const base64 = Buffer.from(new Uint8Array(arrayBuffer)).toString('base64');
+
+        console.log(base64)
 
         // Verifica se o conteúdo do PDF foi retornado
         if (base64) {
