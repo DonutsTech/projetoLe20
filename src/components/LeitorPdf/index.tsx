@@ -70,9 +70,9 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
 
         const command = new GetObjectCommand({ Bucket: 'le20catalogos', Key: nome });
 
-        console.log(command)
-
         const response = await s3.send(command);
+
+        console.log(response)
 
         if (!response.Body) {
           throw new Error('O arquivo não foi encontrado ou está vazio.');
