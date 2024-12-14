@@ -6,11 +6,16 @@ import { convertPdfPageToImage } from '@/utils/pdfUtils';
 import Image from 'next/image';
 import styles from './LeitorPdf.module.scss';
 import logo from '/public/assets/logo/isoLe20.png';
+import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 
 interface ILeitorPdfProps {
   file: string;
   contPag: number;
 }
+
+const s3 = new S3Client({
+  region: 'us-east-1',
+});
 
 const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
   const [pages, setPages] = useState<string[]>([]);
@@ -30,47 +35,48 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const fetchPdfFromS3 = async (url: string): Promise<string> => {
-    try {
-      const response = await fetch(url);
+  const streamToArrayBuffer = async (stream: ReadableStream): Promise<ArrayBuffer> => {
+    const reader = stream.getReader();
+    const chunks: Uint8Array[] = [];
 
-      // Verifica se a requisição foi bem-sucedida
-      if (!response.ok) {
-        throw new Error(`Erro ao buscar o PDF: ${response.statusText}`);
-      }
-
-      // Obtém os dados como um Blob
-      const blob = await response.blob();
-
-      // Converte o Blob em Base64
-      const base64 = await blobToBase64(blob);
-
-      return base64;
-    } catch (error) {
-      console.error('Erro ao buscar o PDF do S3:', error);
-      throw error;
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      chunks.push(value);
     }
-  };
 
-  const blobToBase64 = (blob: Blob): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result as string);
-      reader.onerror = (err) => reject(err);
-      reader.readAsDataURL(blob);
+    // Concatena todos os chunks em um único ArrayBuffer
+    const totalLength = chunks.reduce((acc, chunk) => acc + chunk.length, 0);
+    const result = new Uint8Array(totalLength);
+    let offset = 0;
+
+    chunks.forEach((chunk) => {
+      result.set(chunk, offset);
+      offset += chunk.length;
     });
+
+    return result.buffer;
   };
 
   useEffect(() => {
     const fetchPdf = async () => {
       try {
         setLoading(true);
+        const nome = file.substring(file.lastIndexOf('/') + 1)
 
-        // Baixa o PDF do S3 e converte para Base64
-        const base64 = await fetchPdfFromS3(file);
+        const command = new GetObjectCommand({ Bucket: 'le20catalogos', Key: nome });
+        const response = await s3.send(command);
+
+        if (!response.Body) {
+          throw new Error('O arquivo não foi encontrado ou está vazio.');
+        }
+
+        const arrayBuffer = await streamToArrayBuffer(response.Body as ReadableStream);
+
+        const base64 = Buffer.from(new Uint8Array(arrayBuffer)).toString('base64');
 
         // Verifica se o conteúdo do PDF foi retornado
-        if (base64 || base64 === 'data:application/pdf;base64,') {
+        if (base64) {
           setPdfBase64(base64);
           const { numPages, getPageImage } = await convertPdfPageToImage(base64);
 
