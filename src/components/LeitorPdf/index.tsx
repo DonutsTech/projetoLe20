@@ -68,9 +68,9 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
         setLoading(true);
         const nome = file.substring(file.lastIndexOf('/') + 1)
 
-        console.log(nome)
-
         const command = new GetObjectCommand({ Bucket: 'le20catalogos', Key: nome });
+
+        console.log(command)
 
         const response = await s3.send(command);
 
