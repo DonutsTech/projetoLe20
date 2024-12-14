@@ -16,8 +16,8 @@ interface ILeitorPdfProps {
 const s3 = new S3Client({
   region: 'us-east-1',
   credentials: {
-    accessKeyId: `${process.env.AWS_ACCESS_kEY_ID}`,
-    secretAccessKey: `${process.env.AWS_SECRET_ACCESS_kEY}`,
+    accessKeyId: `${process.env.ACCESS_kEY_ID}`,
+    secretAccessKey: `${process.env.SECRET_ACCESS_kEY}`,
   },
 });
 
