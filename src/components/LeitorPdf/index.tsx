@@ -6,13 +6,15 @@ import { convertPdfPageToImage } from '@/utils/pdfUtils';
 import Image from 'next/image';
 import styles from './LeitorPdf.module.scss';
 import logo from '/public/assets/logo/isoLe20.png';
-import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
+//import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import axios from 'axios';
 
 interface ILeitorPdfProps {
   file: string;
   contPag: number;
 }
 
+/*
 const s3 = new S3Client({
   region: 'us-east-1',
   credentials: {
@@ -20,6 +22,7 @@ const s3 = new S3Client({
     secretAccessKey: `${process.env.SECRET_ACCESS_kEY}`,
   },
 });
+*/
 
 const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
   const [pages, setPages] = useState<string[]>([]);
@@ -39,6 +42,7 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  /*
   const streamToArrayBuffer = async (stream: ReadableStream): Promise<ArrayBuffer> => {
     const reader = stream.getReader();
     const chunks: Uint8Array[] = [];
@@ -61,11 +65,25 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
 
     return result.buffer;
   };
+  */
 
   useEffect(() => {
     const fetchPdf = async () => {
       try {
         setLoading(true);
+
+        const response = await axios.get(file, {
+          responseType: 'arraybuffer',
+          headers: {
+              'Content-Type': 'application/pdf',
+          },
+        });
+
+        console.log('Resposta recebida do S3:', response.status); // Adicionando log
+
+        // Convertendo o arquivo PDF em base64
+        const base64 = Buffer.from(response.data).toString('base64');
+        /*
         const nome = file.substring(file.lastIndexOf('/') + 1)
 
         const command = new GetObjectCommand({ Bucket: 'le20catalogos', Key: nome });
@@ -83,6 +101,7 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
         const base64 = Buffer.from(new Uint8Array(arrayBuffer)).toString('base64');
 
         console.log(base64)
+        */
 
         // Verifica se o conteúdo do PDF foi retornado
         if (base64) {
