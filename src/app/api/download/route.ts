@@ -2,11 +2,11 @@ import { NextResponse } from 'next/server';
 import axios, { AxiosError } from 'axios';
 
 export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '900mb', // Define o limite de tamanho
+    api: {
+        bodyParser: {
+            sizeLimit: '900mb', // Define o limite de tamanho
+        },
     },
-  },
 };
 
 

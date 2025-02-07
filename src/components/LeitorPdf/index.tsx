@@ -66,9 +66,11 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
     return result.buffer;
   };
   */
+console.log("file", file);
 
   useEffect(() => {
-    const fetchPdf = async () => {
+    async function fetchPdf()  {
+      
       try {
         setLoading(true);
 
@@ -147,8 +149,8 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
       }
     };
 
-    fetchPdf();
-  }, [file]);
+    if (file) fetchPdf();
+  }, [file, contPag]);
 
   const handlePageFlip = async (pageIndex: number) => {
     if (!pages[pageIndex] && pageIndex < numPages && pdfBase64) {
