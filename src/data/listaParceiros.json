@@ -85,8 +85,8 @@
       "Presentes"
     ],
     "catalogo": [{
-        "nome": "Catálogo 2024",
-        "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_dallec_2024.pdf",
+        "nome": "Catálogo 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/Catalogo_Dallec_2025.pdf",
         "contPag": 68
       },
       {
@@ -256,14 +256,26 @@
       "Licenças"
     ],
     "catalogo": [{
-      "nome": "Catálogo-Doces 2024",
-      "catalogo": "https://le20catalogos.s3.amazonaws.com/catologo_royal_doce_2024.pdf",
-      "contPag": 12
-    }, {
+      "nome": "Catálogo Halloween 2024",
+      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_HALLOWEEN_ROAYAL_+2024.pdf",
+      "contPag": 15
+    },{
       "nome": "Catálogo-Eletrônicos 2024",
       "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_royal_eletronico_2024.pdf",
       "contPag": 6
-    }, {
+    },{
+      "nome": "Catálogo Candy 2024",
+      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_+CANDY_TOYS_ROYAL_TOYS.pdf",
+      "contPag": 7
+    },{
+      "nome": "Catálogo-Doces 2024",
+      "catalogo": "https://le20catalogos.s3.amazonaws.com/catologo_royal_doce_2024.pdf",
+      "contPag": 12
+    },{
+      "nome": "Catálogo Licenças 2024",
+      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_DE_BRINQUEDOS_LICENCIADOS_2024.pdf",
+      "contPag": 6
+    },{
       "nome": "Catálogo-Brinquedos 2024",
       "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_royal_brinquedo_2024.pdf",
       "contPag": 26
