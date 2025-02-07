@@ -66,7 +66,6 @@ const LeitorPdf = ({ file, contPag = 11 }: ILeitorPdfProps) => {
     return result.buffer;
   };
   */
-console.log("file", file);
 
   useEffect(() => {
     async function fetchPdf()  {
