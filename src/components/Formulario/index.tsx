@@ -129,14 +129,15 @@ const Formulario = () => {
   const [enderecoCompleto, setEnderecoCompleto] = useState<Endereco | null>(null);
   const [cnpjData, setCNPJData] = useState<CNPJData | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [mensagemApi, setMensagemApi] = useState('');
 
   useEffect(() => {
     setTimeout(() => {
-      if (mensagem) {
-        setMensagem('')
+      if (mensagemApi) {
+        setMensagemApi('')
       }
     }, 10000);
-  }, [mensagem]);
+  }, [mensagemApi]);
 
   const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
@@ -217,7 +218,7 @@ const Formulario = () => {
 
 
       if (resp === 'Mensagem não enviada. Contate-nos por telefone.') {
-        setMensagem(resp)
+        setMensagemApi(resp)
       }
 
       reset();
@@ -233,7 +234,7 @@ const Formulario = () => {
 
     } catch (error) {
       console.error('Erro ao enviar o formulário:', error);
-      setMensagem('Mensagem não enviada. Contate-nos por telefone.')
+      setMensagemApi('Mensagem não enviada. Contate-nos por telefone.')
     } finally {
       setIsSubmitting(false);
     }
@@ -324,8 +325,8 @@ const Formulario = () => {
       </div>
       <span className={Style.message}>* campos obrigatórios</span>
       {
-        !(mensagem === '') && (
-          <p>{mensagem}</p>
+        !(mensagemApi === '') && (
+          <p>{mensagemApi}</p>
         )
       }
       <button type="submit" disabled={isSubmitting}>
