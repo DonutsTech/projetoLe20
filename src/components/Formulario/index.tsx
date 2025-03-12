@@ -230,7 +230,7 @@ const Formulario = () => {
       setMensagem('');
       setEnderecoCompleto(null);
       setCNPJData(null);
-      setMensagem(resp);
+      setMensagemApi(resp)
 
     } catch (error) {
       console.error('Erro ao enviar o formulário:', error);

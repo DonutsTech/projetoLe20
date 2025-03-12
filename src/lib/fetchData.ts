@@ -4,7 +4,7 @@ export async function sendMail(text: string, nome: string): Promise<string> {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer  wBa6i42xLa5mW1hr8zCVa4g08yke4erWK9TkBrRgfrdYFxx80Pxzt0uB39WAZdmu4vtyQdG2QCuV`
+        'Authorization': `Bearer wBa6i42xLa5mW1hr8zCVa4g08yke4erWK9TkBrRgfrdYFxx80Pxzt0uB39WAZdmu4vtyQdG2QCuV`
       },
       body: JSON.stringify({
         name: 'Le20',
@@ -15,6 +15,8 @@ export async function sendMail(text: string, nome: string): Promise<string> {
     });
 
     const data = await response.json();
+
+    console.log(data)
 
     if (data.mensagem === 'Mensagem não enviada. Contate-nos por telefone.') {
       return 'Mensagem não enviada. Contate-nos por telefone.'
