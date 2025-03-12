@@ -15,7 +15,7 @@ const schema = z.object({
   CEP: z.string().regex(/^\d{5}-\d{3}$/, 'CEP inválido'),
   cnpj: z.string()
     .optional()
-    .refine((val) => val !== undefined && !(/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/.test(val)), 'CNPJ inválido'),
+    .refine((val) => val !== undefined && (/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/.test(val)), 'CNPJ inválido'),
   mensagem: z.string().optional(),
 });
 
@@ -170,7 +170,6 @@ const Formulario = () => {
 
         if (formattedCNPJ.replace(/\D/g, '').length === 14) {
           const cnpjInfo = await fetchCNPJData(formattedCNPJ.replace(/\D/g, ''));
-          console.log(cnpjInfo)
           if (cnpjInfo) {
             setCNPJData(cnpjInfo);
           }
