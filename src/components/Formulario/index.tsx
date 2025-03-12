@@ -80,6 +80,8 @@ const Formulario = () => {
   const fetchCNPJData = async (cnpj: string | undefined) => {
     if (!cnpj) return null;
 
+    console.log(cnpj)
+
     try {
       const response = await fetch(`https://open.cnpja.com/office/${cnpj}`);
       const data = await response.json();
@@ -232,7 +234,6 @@ const Formulario = () => {
         setEnderecoCompleto(null);
         setCNPJData(null);
         setMensagemApi(resp)
-
       }
     } catch (error) {
       console.error('Erro ao enviar o formulário:', error);
