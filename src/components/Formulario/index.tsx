@@ -80,8 +80,6 @@ const Formulario = () => {
   const fetchCNPJData = async (cnpj: string | undefined) => {
     if (!cnpj) return null;
 
-    console.log(cnpj)
-
     try {
       const response = await fetch(`https://open.cnpja.com/office/${cnpj}`);
       const data = await response.json();
@@ -172,6 +170,7 @@ const Formulario = () => {
 
         if (formattedCNPJ.replace(/\D/g, '').length === 14) {
           const cnpjInfo = await fetchCNPJData(formattedCNPJ.replace(/\D/g, ''));
+          console.log(cnpjInfo)
           if (cnpjInfo) {
             setCNPJData(cnpjInfo);
           }
