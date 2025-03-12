@@ -221,17 +221,19 @@ const Formulario = () => {
         setMensagemApi(resp)
       }
 
-      reset();
-      setNome('');
-      setEmail('');
-      setTelefone('');
-      setCEP('');
-      setCNPJ('');
-      setMensagem('');
-      setEnderecoCompleto(null);
-      setCNPJData(null);
-      setMensagemApi(resp)
+      if (resp === 'Mensagem Recebida Com Sucesso!') {
+        reset();
+        setNome('');
+        setEmail('');
+        setTelefone('');
+        setCEP('');
+        setCNPJ('');
+        setMensagem('');
+        setEnderecoCompleto(null);
+        setCNPJData(null);
+        setMensagemApi(resp)
 
+      }
     } catch (error) {
       console.error('Erro ao enviar o formulário:', error);
       setMensagemApi('Mensagem não enviada. Contate-nos por telefone.')

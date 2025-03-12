@@ -16,13 +16,11 @@ export async function sendMail(text: string, nome: string): Promise<string> {
 
     const data = await response.json();
 
-    console.log(data)
-
-    if (data.mensagem === 'Mensagem não enviada. Contate-nos por telefone.') {
+    if (data.mensagem !== 'Mensagem Recebida Com Sucesso!') {
       return 'Mensagem não enviada. Contate-nos por telefone.'
     }
 
-    return 'Email enviado com sucesso!';
+    return 'Mensagem Recebida Com Sucesso!';
   } catch (error) {
     console.error('Erro ao enviar o email:', error);
     return 'Mensagem não enviada. Contate-nos por telefone.';
