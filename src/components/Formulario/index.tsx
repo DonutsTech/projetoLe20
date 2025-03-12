@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Style from './Formulario.module.scss';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { createText } from '@/utils/mensagem';
+import { sendMail } from '@/lib/fetchData';
 
 const schema = z.object({
   nome: z.string().nonempty('Nome é obrigatório'),
@@ -17,9 +19,9 @@ const schema = z.object({
   mensagem: z.string().optional(),
 });
 
-type FormData = z.infer<typeof schema>;
+export type FormData = z.infer<typeof schema>;
 
-interface Endereco {
+export interface Endereco {
   logradouro: string;
   bairro: string;
   localidade: string;
@@ -33,7 +35,7 @@ interface ViaCEPErro {
 
 type ViaCEPResponse = Endereco | ViaCEPErro;
 
-interface CNPJData {
+export interface CNPJData {
   company: {
     name: string;
     members: {
@@ -76,7 +78,7 @@ const Formulario = () => {
   };
 
   const fetchCNPJData = async (cnpj: string | undefined) => {
-    if (!cnpj) return null; 
+    if (!cnpj) return null;
 
     try {
       const response = await fetch(`https://open.cnpja.com/office/${cnpj}`);
@@ -88,6 +90,7 @@ const Formulario = () => {
     }
   };
 
+
   const formatTelefone = (value: string) => {
     return value
       .replace(/\D/g, '')
@@ -98,19 +101,19 @@ const Formulario = () => {
 
   const formatCEP = (value: string) => {
     return value
-      .replace(/\D/g, '')
-      .replace(/(\d{5})(\d)/, '$1-$2')
-      .slice(0, 9);
+    .replace(/\D/g, '')
+    .replace(/(\d{5})(\d)/, '$1-$2')
+    .slice(0, 9);
   };
 
   const formatCNPJ = (value: string) => {
     return value
-      .replace(/\D/g, '')
-      .replace(/^(\d{2})(\d)/, '$1.$2')
-      .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
-      .replace(/\.(\d{3})(\d)/, '.$1/$2')
-      .replace(/(\d{4})(\d)/, '$1-$2')
-      .slice(0, 18);
+    .replace(/\D/g, '')
+    .replace(/^(\d{2})(\d)/, '$1.$2')
+    .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
+    .replace(/\.(\d{3})(\d)/, '.$1/$2')
+    .replace(/(\d{4})(\d)/, '$1-$2')
+    .slice(0, 18);
   };
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({
@@ -127,10 +130,18 @@ const Formulario = () => {
   const [cnpjData, setCNPJData] = useState<CNPJData | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (mensagem) {
+        setMensagem('')
+      }
+    }, 10000);
+  }, [mensagem]);
+
   const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
 
-    
+
     switch (name) {
       case 'nome':
         setNome(value);
@@ -156,7 +167,7 @@ const Formulario = () => {
         const formattedCNPJ = formatCNPJ(value);
         setCNPJ(formattedCNPJ);
 
-        if (formattedCNPJ.replace(/\D/g, '').length === 14) { 
+        if (formattedCNPJ.replace(/\D/g, '').length === 14) {
           const cnpjInfo = await fetchCNPJData(formattedCNPJ.replace(/\D/g, ''));
           if (cnpjInfo) {
             setCNPJData(cnpjInfo);
@@ -182,12 +193,7 @@ const Formulario = () => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/sendEmail', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+      const texto: string = createText({
           ...data,
           enderecoCompleto: {
             localidade: enderecoCompleto?.localidade || '',
@@ -205,10 +211,15 @@ const Formulario = () => {
             atividade_principal: cnpjData.mainActivity.text,
             socios: cnpjData.company.members.map((socio) => socio.person.name).join(',\n')
           } : null
-        }),
-      });
+        })
 
-      await response.json();
+      const resp = await sendMail(texto, data.nome)
+
+
+      if (resp === 'Mensagem não enviada. Contate-nos por telefone.') {
+        setMensagem(resp)
+      }
+
       reset();
       setNome('');
       setEmail('');
@@ -218,8 +229,11 @@ const Formulario = () => {
       setMensagem('');
       setEnderecoCompleto(null);
       setCNPJData(null);
+      setMensagem(resp);
+
     } catch (error) {
       console.error('Erro ao enviar o formulário:', error);
+      setMensagem('Mensagem não enviada. Contate-nos por telefone.')
     } finally {
       setIsSubmitting(false);
     }
@@ -309,6 +323,11 @@ const Formulario = () => {
         />
       </div>
       <span className={Style.message}>* campos obrigatórios</span>
+      {
+        !(mensagem === '') && (
+          <p>{mensagem}</p>
+        )
+      }
       <button type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Enviando...' : 'Enviar'}
       </button>
