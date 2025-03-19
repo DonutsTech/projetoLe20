@@ -43,6 +43,10 @@
       "nome": "Catálogo 2024",
       "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_carlu_2024.pdf",
       "contPag": 157
+    },{
+      "nome": "Lançamentos 2025",
+      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/lancamentos_Carlu_2025.pdf",
+      "contPag": 16
     }]
   },
   {
@@ -62,9 +66,9 @@
       "Licenças"
     ],
     "catalogo": [{
-      "nome": "Catálogo 2024",
-      "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_cks_2024.pdf",
-      "contPag": 149
+      "nome": "Catálogo 2025",
+      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_CKS_2025.pdf",
+      "contPag": 180
     }]
   },
   {
@@ -298,8 +302,8 @@
       "Licenças"
     ],
     "catalogo": [{
-      "nome": "Catálogo 2024",
-      "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_sidnyl_2024.pdf",
+      "nome": "Catálogo 2025",
+      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_sidnyl_+2025.pdf",
       "contPag": 72
     }]
   },
@@ -322,9 +326,9 @@
       "Licenças"
     ],
     "catalogo": [{
-        "nome": "Catálogo 2024",
-        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_toyster_2024.pdf",
-        "contPag": 174
+        "nome": "Catálogo 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_TOYSTER_2025_(precificado).pdf",
+        "contPag": 168
       },
       {
         "nome": "Folder dia das Crianças 2024",
