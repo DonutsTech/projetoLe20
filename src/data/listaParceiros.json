@@ -17,11 +17,13 @@
       "Presentes",
       "Licenças"
     ],
-    "catalogo": [{
-      "nome": "Catálogo 2024",
-      "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_bichoEsperto_2024.pdf",
-      "contPag": 98
-    }]
+    "catalogo": [
+      {
+        "nome": "Catálogo 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CatalogoBichoEsperto-2025.pdf",
+        "contPag": 82
+      }
+    ]
   },
   {
     "nome": "Carlu Brinquedos",
@@ -39,15 +41,18 @@
       "Brinquedos",
       "Pedagógicos"
     ],
-    "catalogo": [{
-      "nome": "Catálogo 2024",
-      "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_carlu_2024.pdf",
-      "contPag": 157
-    },{
-      "nome": "Lançamentos 2025",
-      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/lancamentos_Carlu_2025.pdf",
-      "contPag": 16
-    }]
+    "catalogo": [
+      {
+        "nome": "Catálogo 2024",
+        "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_carlu_2024.pdf",
+        "contPag": 157
+      },
+      {
+        "nome": "Lançamentos 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/lancamentos_Carlu_2025.pdf",
+        "contPag": 16
+      }
+    ]
   },
   {
     "nome": "Cks",
@@ -65,11 +70,13 @@
       "Presentes",
       "Licenças"
     ],
-    "catalogo": [{
-      "nome": "Catálogo 2025",
-      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_CKS_2025.pdf",
-      "contPag": 180
-    }]
+    "catalogo": [
+      {
+        "nome": "Catálogo 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_CKS_2025.pdf",
+        "contPag": 180
+      }
+    ]
   },
   {
     "nome": "Dallec",
@@ -88,15 +95,16 @@
       "Festas",
       "Presentes"
     ],
-    "catalogo": [{
+    "catalogo": [
+      {
         "nome": "Catálogo 2025",
-        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/Catalogo_Dallec_2025.pdf",
-        "contPag": 68
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CatalogoDALLEC2025.pdf",
+        "contPag": 70
       },
       {
-        "nome": "Catálogo Natal 2024",
-        "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_dallec_natal_2024.pdf",
-        "contPag": 30
+        "nome": "Catálogo Natal 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/DALLEC-CATALOGO-NATAL-2025.pdf",
+        "contPag": 34
       }
     ]
   },
@@ -116,11 +124,13 @@
       "Puericulturas",
       "Licenças"
     ],
-    "catalogo": [{
-      "nome": "Catálogo 2024",
-      "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_dermiwil_e_babygo_2024.pdf",
-      "contPag": 168
-    }]
+    "catalogo": [
+      {
+        "nome": "Catálogo 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CatalogoGrupoDermiwil2025.pdf",
+        "contPag": 172
+      }
+    ]
   },
   {
     "nome": "GPK Brasil",
@@ -136,11 +146,13 @@
     "tips": [
       "Papelarias"
     ],
-    "catalogo": [{
-      "nome": "Catálogo 2024",
-      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_gpk_2024",
-      "contPag": 56
-    }]
+    "catalogo": [
+      {
+        "nome": "Catálogo 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CatalogoGPK2025.pdf",
+        "contPag": 54
+      }
+    ]
   },
   {
     "nome": "Masquerade",
@@ -157,7 +169,8 @@
       "Brinquedos",
       "Festas"
     ],
-    "catalogo": [{
+    "catalogo": [
+      {
         "nome": "Catálogo 2025",
         "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_masquerade_2025.pdf",
         "contPag": 62
@@ -191,11 +204,13 @@
       "Presentes",
       "Licenças"
     ],
-    "catalogo": [{
-      "nome": "Catálogo 2024",
-      "catalogo": "https://le20catalogos.s3.amazonaws.com/CATALOGO_MOLIN_2024_OK.pdf",
-      "contPag": 266
-    }]
+    "catalogo": [
+      {
+        "nome": "Catálogo 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/Molin2025.pdf",
+        "contPag": 287
+      }
+    ]
   },
   {
     "nome": "Planetoys",
@@ -212,11 +227,13 @@
       "Brinquedos",
       "Presentes"
     ],
-    "catalogo": [{
-      "nome": "Catálogo 2024",
-      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_planetoys_2024.pdf",
-      "contPag": 8
-    }]
+    "catalogo": [
+      {
+        "nome": "Catálogo 2024",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_planetoys_2024.pdf",
+        "contPag": 8
+      }
+    ]
   },
   {
     "nome": "RDJ Brinquedos",
@@ -236,11 +253,13 @@
       "Pedagógicos",
       "Puericulturas"
     ],
-    "catalogo": [{
-      "nome": "Catálogo 2023",
-      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_rdj_2023.pdf",
-      "contPag": 236
-    }]
+    "catalogo": [
+      {
+        "nome": "Catálogo 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/RDJBRINQUEDOS2025.pdf",
+        "contPag": 142
+      }
+    ]
   },
   {
     "nome": "Royal Toys",
@@ -259,31 +278,38 @@
       "Presentes",
       "Licenças"
     ],
-    "catalogo": [{
-      "nome": "Catálogo Halloween 2024",
-      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_HALLOWEEN_ROAYAL_+2024.pdf",
-      "contPag": 15
-    },{
-      "nome": "Catálogo-Eletrônicos 2024",
-      "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_royal_eletronico_2024.pdf",
-      "contPag": 6
-    },{
-      "nome": "Catálogo Candy 2024",
-      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_+CANDY_TOYS_ROYAL_TOYS.pdf",
-      "contPag": 7
-    },{
-      "nome": "Catálogo-Doces 2024",
-      "catalogo": "https://le20catalogos.s3.amazonaws.com/catologo_royal_doce_2024.pdf",
-      "contPag": 12
-    },{
-      "nome": "Catálogo Licenças 2024",
-      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_DE_BRINQUEDOS_LICENCIADOS_2024.pdf",
-      "contPag": 6
-    },{
-      "nome": "Catálogo-Brinquedos 2024",
-      "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_royal_brinquedo_2024.pdf",
-      "contPag": 26
-    }]
+    "catalogo": [
+      {
+        "nome": "Catálogo Licenças 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALAGODEBRINQUEDOSLICENCIADOS2025.pdf",
+        "contPag": 6
+      },
+      {
+        "nome": "Catálogo Brinquedos Sensoriais",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGODEBRINQUEDOSSENSORIAIS2024ROYALTOYS.pdf",
+        "contPag": 7
+      },
+      {
+        "nome": "Catálogo Doces 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALAGODEDOCESROYALTOYS2025.pdf",
+        "contPag": 11
+      },
+      {
+        "nome": "Catálogo Lançamentos 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CatalogoLancamento2025.pdff",
+        "contPag": 23
+      },
+      {
+        "nome": "Catálogo Eletrônicos 2024",
+        "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_royal_eletronico_2024.pdf",
+        "contPag": 6
+      },
+      {
+        "nome": "Catálogo Brinquedos 2024",
+        "catalogo": "https://le20catalogos.s3.amazonaws.com/catalogo_royal_brinquedo_2024.pdf",
+        "contPag": 26
+      }
+    ]
   },
   {
     "nome": "Sid-nyl",
@@ -301,11 +327,13 @@
       "Presentes",
       "Licenças"
     ],
-    "catalogo": [{
-      "nome": "Catálogo 2025",
-      "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_sidnyl_+2025.pdf",
-      "contPag": 72
-    }]
+    "catalogo": [
+      {
+        "nome": "Catálogo 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_sidnyl_+2025.pdf",
+        "contPag": 72
+      }
+    ]
   },
   {
     "nome": "Toyster",
@@ -325,14 +353,15 @@
       "Puericulturas",
       "Licenças"
     ],
-    "catalogo": [{
+    "catalogo": [
+      {
         "nome": "Catálogo 2025",
         "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_TOYSTER_2025_(precificado).pdf",
         "contPag": 168
       },
       {
-        "nome": "Folder dia das Crianças 2024",
-        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/folheto_toyster_sdc_2024.pdf",
+        "nome": "Folder dia das Crianças 2025",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/ToysterFolhetoDiaDasCriancas2025.pdf",
         "contPag": 16
       }
     ]
@@ -352,7 +381,8 @@
       "Papelaria Fofa",
       "Presentes"
     ],
-    "catalogo": [{
+    "catalogo": [
+      {
         "nome": "Catálogo 2024",
         "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_uatt_geral_2024.pdf",
         "contPag": 53
