@@ -72,9 +72,9 @@
     ],
     "catalogo": [
       {
-        "nome": "Catálogo 2025",
-        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_CKS_2025.pdf",
-        "contPag": 180
+        "nome": "Catálogo 2026",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_CKS_2026.pdf",
+        "contPag": 184
       }
     ]
   },
@@ -329,9 +329,9 @@
     ],
     "catalogo": [
       {
-        "nome": "Catálogo 2025",
-        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_sidnyl_+2025.pdf",
-        "contPag": 72
+        "nome": "Catálogo 2026",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_sid_nyl_2026.pdf",
+        "contPag": 84
       }
     ]
   },
@@ -355,9 +355,9 @@
     ],
     "catalogo": [
       {
-        "nome": "Catálogo 2025",
-        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_TOYSTER_2025_(precificado).pdf",
-        "contPag": 168
+        "nome": "Catálogo 2026",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/Cat%C3%A1logo_Toyster_2026.pdf",
+        "contPag": 162
       },
       {
         "nome": "Folder dia das Crianças 2025",
@@ -367,35 +367,26 @@
     ]
   },
   {
-    "nome": "Uatt?",
+    "nome": "Zip: Cuidar com Carinho",
     "imagens": [
-      "/assets/empresa/uatt/imagem/uatt01.png",
-      "/assets/empresa/uatt/imagem/uatt02.png",
-      "/assets/empresa/uatt/imagem/uatt03.png",
-      "/assets/empresa/uatt/imagem/uatt04.png",
-      "/assets/empresa/uatt/imagem/uatt05.png"
+      "/assets/empresa/zip/imagem/zip01.png",
+      "/assets/empresa/zip/imagem/zip02.png",
+      "/assets/empresa/zip/imagem/zip03.png",
+      "/assets/empresa/zip/imagem/zip04.png",
+      "/assets/empresa/zip/imagem/zip05.png"
     ],
-    "descricao": "A Uatt é feita de pessoas que colocam o coração em tudo o que fazem. Aqui, o copo está sempre meio cheio: cada desafio é uma oportunidade. Com criatividade e trabalho em equipe, transformamos limões em limonadas irresistíveis, espalhando coisas boas e fazendo corações transbordarem de sentimentos incríveis.",
-    "linkSite": "https://www.uatt.com.br/",
+    "descricao": "A Zip é uma empresa que abraça o lema \"cuidar com carinho\" ao criar produtos de alta qualidade e conforto para bebês. Seus produtos são desenvolvidos com atenção aos detalhes, visando o bem-estar dos pequeninos e a tranquilidade dos pais.",
+    "linkSite": "https://www.zipbaby.com.br/",
     "tips": [
-      "Papelaria Fofa",
-      "Presentes"
+      "Puericulturas",
+      "Presentes",
+      "Brinquedos"
     ],
     "catalogo": [
       {
-        "nome": "Catálogo 2024",
-        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_uatt_geral_2024.pdf",
-        "contPag": 53
-      },
-      {
-        "nome": "Ideias ! Ideias 2024",
-        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_uatt_ideia_2024.pdf",
-        "contPag": 36
-      },
-      {
-        "nome": "Lançamentos",
-        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/catalogo_uatt_lancamentos_2024.pdf",
-        "contPag": 5
+        "nome": "Catálogo 2026",
+        "catalogo": "https://le20catalogos.s3.us-east-1.amazonaws.com/CATALOGO_ZIP_2026.pdf",
+        "contPag": 65
       }
     ]
   }
